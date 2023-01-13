@@ -11,19 +11,19 @@ namespace Ono.MVP.Model
         public static CharacterHpModel I = null;
 
         public IReadOnlyReactiveProperty<float> CurrentHp_0 => _currentHp_0;
-        private readonly FloatReactiveProperty _currentHp_0 = new FloatReactiveProperty(10f);
+        private readonly FloatReactiveProperty _currentHp_0 = new FloatReactiveProperty(100f);
 
         public IReadOnlyReactiveProperty<float> CurrentHp_1 => _currentHp_1;
-        private readonly FloatReactiveProperty _currentHp_1 = new FloatReactiveProperty(10f);
+        private readonly FloatReactiveProperty _currentHp_1 = new FloatReactiveProperty(100f);
 
         public IReadOnlyReactiveProperty<float> CurrentHp_2 => _currentHp_2;
-        private readonly FloatReactiveProperty _currentHp_2 = new FloatReactiveProperty(10f);
+        private readonly FloatReactiveProperty _currentHp_2 = new FloatReactiveProperty(100f);
 
         public IReadOnlyReactiveProperty<float> CurrentHp_3 => _currentHp_3;
-        private readonly FloatReactiveProperty _currentHp_3 = new FloatReactiveProperty(10f);
+        private readonly FloatReactiveProperty _currentHp_3 = new FloatReactiveProperty(100f);
 
         public IReadOnlyReactiveProperty<float> CurrentHp_4 => _currentHp_4;
-        private readonly FloatReactiveProperty _currentHp_4 = new FloatReactiveProperty(10f);
+        private readonly FloatReactiveProperty _currentHp_4 = new FloatReactiveProperty(100f);
 
         private async void Start()
         {

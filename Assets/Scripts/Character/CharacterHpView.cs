@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 using DG.Tweening;
+using Cysharp.Threading.Tasks;
+using System;
 
 namespace Ono.MVP.View
 {
@@ -13,9 +15,11 @@ namespace Ono.MVP.View
         [Header("キャラクターの体力ゲージ")]
         Slider[] _hpSlider;
 
-        public void Start()
+        public async void Awake()
         {
-            for(int i = 0; i < _hpSlider.Length; i++)
+            await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
+
+            for (int i = 0; i < _hpSlider.Length; i++)
             {
                 _hpSlider[i].maxValue = SaveCharacterData.I.Hp[i];
                 _hpSlider[i].value = _hpSlider[i].maxValue;

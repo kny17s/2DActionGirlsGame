@@ -1,4 +1,6 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,19 +8,18 @@ using UnityEngine.UI;
 
 public class CharacterSkillView : MonoBehaviour
 {
-    public static CharacterSkillView I = null;
-
     [SerializeField]
     [Header("キャラクターのスキルゲージ")]
     Slider[] _skillSlider;
 
-    void Start()
+    public async void Start()
     {
-        I = this;
+        await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
 
         for (int i = 0; i < _skillSlider.Length; i++)
         {
             _skillSlider[i].maxValue = SaveCharacterData.I.Mp[i];
+            _skillSlider[i].value = _skillSlider[i].maxValue;
         }
     }
 
