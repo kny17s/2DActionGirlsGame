@@ -28,7 +28,7 @@ namespace Ono.MVP.Model
         private async void Start()
         {
             I = this;
-            await UniTask.Delay(TimeSpan.FromSeconds(0.1));
+            await UniTask.Delay(TimeSpan.FromSeconds(0.2f));
             SettingHp();
         }
 

@@ -25,6 +25,12 @@ public class CharacterSkillPresenter : MonoBehaviour
         _characterSkillModel.CurrentSp_2
             .Subscribe(value => { _characterSkillView.SetValueCharacter2(value); }).AddTo(this);
 
+        _characterSkillModel.CurrentSp_3
+            .Subscribe(value => { _characterSkillView.SetValueCharacter3(value); }).AddTo(this);
+
+        _characterSkillModel.CurrentSp_4
+            .Subscribe(value => { _characterSkillView.SetValueCharacter4(value); }).AddTo(this);
+
     }
 
 }

@@ -70,4 +70,36 @@ public class CharacterSkillView : MonoBehaviour
         }
     }
 
+    public void SetValueCharacter3(float value)
+    {
+        // アニメーションしながらSliderを動かす
+        DOTween.To(() => _skillSlider[3].value,
+            n => _skillSlider[3].value = n,
+            value,
+            duration: 1.0f);
+
+        Debug.Log($"しおりの現在のMP{value}");
+
+        if (value <= 0)
+        {
+            Debug.Log("しおりのMPが0になりました");
+        }
+    }
+
+    public void SetValueCharacter4(float value)
+    {
+        // アニメーションしながらSliderを動かす
+        DOTween.To(() => _skillSlider[4].value,
+            n => _skillSlider[4].value = n,
+            value,
+            duration: 1.0f);
+
+        Debug.Log($"しおりの現在のMP{value}");
+
+        if (value <= 0)
+        {
+            Debug.Log("しおりのMPが0になりました");
+        }
+    }
+
 }

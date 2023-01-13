@@ -73,8 +73,8 @@ namespace Ono.MVP.View
         public void SetValueCharacter3(float value)
         {
             // アニメーションしながらSliderを動かす
-            DOTween.To(() => _hpSlider[2].value,
-                n => _hpSlider[2].value = n,
+            DOTween.To(() => _hpSlider[3].value,
+                n => _hpSlider[3].value = n,
                 value,
                 duration: 1.0f);
 
@@ -89,8 +89,8 @@ namespace Ono.MVP.View
         public void SetValueCharacter4(float value)
         {
             // アニメーションしながらSliderを動かす
-            DOTween.To(() => _hpSlider[2].value,
-                n => _hpSlider[2].value = n,
+            DOTween.To(() => _hpSlider[4].value,
+                n => _hpSlider[4].value = n,
                 value,
                 duration: 1.0f);
 

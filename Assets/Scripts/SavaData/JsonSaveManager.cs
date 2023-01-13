@@ -23,10 +23,6 @@ public static class JsonSaveManager<T>
             using (StreamReader sr = new StreamReader(SavePath(path)))
             {
                 string datastr = sr.ReadToEnd();
-                for(int i = 0; i < 20; i++)
-                {
-                    Debug.Log(datastr[i]);
-                }
                 return JsonUtility.FromJson<T>(datastr);
             }
         }

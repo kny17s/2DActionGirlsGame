@@ -667,9 +667,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1000
+  m_MaxValue: 200
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 113
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1293,6 +1293,84 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 399053313}
   m_CullTransparentMesh: 1
+--- !u!1 &411987792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 411987793}
+  - component: {fileID: 411987796}
+  - component: {fileID: 411987795}
+  - component: {fileID: 411987794}
+  m_Layer: 0
+  m_Name: CharacteMp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &411987793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411987792}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &411987794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411987792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01fc7017b8bad324aae4a7efd3239b36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &411987795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411987792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95a7802f185559f49a1e874f20212b85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skillSlider:
+  - {fileID: 786552827}
+  - {fileID: 1131790266}
+  - {fileID: 6632484419252141639}
+  - {fileID: 155841808}
+  - {fileID: 521831172}
+--- !u!114 &411987796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411987792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1410ac8f4f7279e4a9440867f0d3ee75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterSkillView: {fileID: 411987795}
+  _characterSkillModel: {fileID: 411987794}
 --- !u!1 &462643894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1651,9 +1729,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1000
+  m_MaxValue: 200
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 113
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1972,7 +2050,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 200
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 113
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2213,9 +2291,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1000
+  m_MaxValue: 200
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 113
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2641,7 +2719,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 200
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 113
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3071,7 +3149,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1000
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 113
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3162,7 +3240,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 200
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 113
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5110,7 +5188,7 @@ GameObject:
   - component: {fileID: 1934163098}
   - component: {fileID: 1934163097}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: CharacterStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5185,10 +5263,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _savePath:
-  - 
-  - 
-  - 
-  - 
+  - "\u30B7\u30E3\u30EB\u30ED\u30C3\u30C6"
+  - "\u3057\u304A\u308A"
+  - "\u3048\u308B"
+  - "\u30A2\u30EA\u30A2"
+  - "\u30AB\u30A8\u30C7"
   _statusData: {fileID: 11400000, guid: 90c6d204ac9012541b693a8a0378b590, type: 2}
 --- !u!4 &1934163099
 Transform:
@@ -5203,7 +5282,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1958627118
 GameObject:
@@ -5633,7 +5712,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 200
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 113
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6229,7 +6308,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 200
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 113
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6808,9 +6887,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1000
+  m_MaxValue: 200
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 113
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
