@@ -6,17 +6,18 @@ public class SaveController : MonoBehaviour
 {
     public static SaveController I = null;
 
-    /// <summary>キャラクターのステータスデータのパス名</summary>
+    /// <summary>キャラクターステータスデータのパス名</summary>
     public List<string> SavePath => _savePath;
 
     [SerializeField]
-    [Header("保存されているキャラクターのパス名")]
+    [Header("キャラクターデータのパス名")]
     List<string> _savePath = new();
 
     [SerializeField]
+    [Header("初期ステータス")]
     StatusData _statusData;
 
-    private void Start()
+    private void Awake()
     {
         I = this;
         LoadingCharacterData();
@@ -30,16 +31,10 @@ public class SaveController : MonoBehaviour
         }
     }
 
-    public void UnRegister()
-    {
-        for (int i = 0; i < _statusData.StatusDatas.Count; i++)
-        {
-            _savePath.Remove(_statusData.StatusDatas[i].Name);
-        }
-    }
+    public void UnRegister() => _savePath = new();
 
 
-    /// <summary></summary>
+    /// <summary>セーブデータを読み込んで反映</summary>
     public void LoadingCharacterData()
     {
         for (int i = 0; i < _statusData.StatusDatas.Count; i++)

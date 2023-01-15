@@ -54,8 +54,7 @@ public class StatusDatas
     int _lv;
 
     [SerializeField]
-    [Header("キャラクターの体力")]
-    float _hp;
+    [Header("キャラクターの体力")]    float _hp;
 
     [SerializeField]
     [Header("キャラクターの魔力")]

@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(SaveController))]
-public class TestEditer : Editor
+public class SaveDataEditer : Editor
 {
 
     /// <summary>

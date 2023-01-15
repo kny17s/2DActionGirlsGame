@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57276832cf2d3c44c8285c122d0221e8, type: 3}
+  m_Name: EnemyStatusData
+  m_EditorClassIdentifier: 
+  _statusDatas:
+  - _name: "\u9B54\u6CD5\u5263\u58EB"
+    _lv: 50
+    _hp: 300
+    _mp: 250
+    _atk: 20
+    _magicAtk: 20
+    _def: 6
+    _magicDef: 6
+    _agi: 8
+  - _name: "\u5263\u58EB"
+    _lv: 50
+    _hp: 300
+    _mp: 250
+    _atk: 20
+    _magicAtk: 20
+    _def: 6
+    _magicDef: 6
+    _agi: 8
+  - _name: "\u6226\u58EB"
+    _lv: 50
+    _hp: 300
+    _mp: 250
+    _atk: 20
+    _magicAtk: 20
+    _def: 6
+    _magicDef: 6
+    _agi: 8
+  - _name: "\u9B54\u5C0E\u58EB"
+    _lv: 50
+    _hp: 300
+    _mp: 250
+    _atk: 20
+    _magicAtk: 20
+    _def: 6
+    _magicDef: 6
+    _agi: 8

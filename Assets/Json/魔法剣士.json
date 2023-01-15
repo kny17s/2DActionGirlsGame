@@ -1,0 +1,11 @@
+{
+    "_enemyName": "魔法剣士",
+    "_enemyLv": 50,
+    "_enemyHp": 300.0,
+    "_enemyAtk": 20.0,
+    "_enemyDef": 6.0,
+    "_enemyMagicAtk": 6.0,
+    "_enemyMagicDef": 6.0,
+    "_enemyAgi": 8.0,
+    "_enemyMp": 250
+}

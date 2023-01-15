@@ -1,10 +1,9 @@
 using UnityEngine;
 using System.IO;
-
 public static class JsonSaveManager<T>
 {
     static string SavePath(string path)
-        => $"C:/Unity/Valentine'sGame/Assets/Json/{path}.json";
+        => $"C:/Unity/2DActionGirlsGame/Assets/Json/{path}.json";
 
     public static void Save(T data, string path)
     {

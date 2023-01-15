@@ -13,10 +13,15 @@ public class EnemyAtk : MonoBehaviour
 
     float _currentTime;
 
+    [SerializeField]
+    Image _characterImage;
+
+    [SerializeField]
+    Sprite[] _sprites;
     private async void Start()
     {
         await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
-        _atkSlider.maxValue = SaveCharacterData.I.Agi[3];
+        _atkSlider.maxValue = SaveEnemyCharacterData.I.EnemyAgi[0];
         _atkSlider.value = _atkSlider.minValue;
     }
 
@@ -28,7 +33,8 @@ public class EnemyAtk : MonoBehaviour
 
             _currentTime = _atkSlider.minValue;
             var num = UnityEngine.Random.Range(0, 3);
-            var damage = SaveCharacterData.I.Atk[3] - SaveCharacterData.I.Def[num];
+            var damage = SaveEnemyCharacterData.I.EnemyAtk[0] - SaveCharacterData.I.Def[num];
+            Attack();
             CharacterHpModel.I.Damage(damage, num);
         }
         else
@@ -37,5 +43,13 @@ public class EnemyAtk : MonoBehaviour
         }
 
         _atkSlider.value = _currentTime;
+
+    }
+
+    public async void Attack()
+    {
+        _characterImage.sprite = _sprites[1];
+        await UniTask.Delay(TimeSpan.FromSeconds(1.0f));
+        _characterImage.sprite = _sprites[0];
     }
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57276832cf2d3c44c8285c122d0221e8, type: 3}
-  m_Name: StatusData
+  m_Name: AllyStatusData
   m_EditorClassIdentifier: 
   _statusDatas:
   - _name: "\u30B7\u30E3\u30EB\u30ED\u30C3\u30C6"

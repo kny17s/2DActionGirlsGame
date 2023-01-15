@@ -19,7 +19,7 @@ namespace Ono.MVP.Model
         {
             I = this;
             await UniTask.Delay(TimeSpan.FromSeconds(0.1));
-            _currentEnemyHp.Value = SaveCharacterData.I.Hp[3];
+            _currentEnemyHp.Value = SaveEnemyCharacterData.I.EnemyHp[0];
         }
 
         public void Damage(float damage)

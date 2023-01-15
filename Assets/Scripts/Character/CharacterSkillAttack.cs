@@ -5,7 +5,7 @@ using System.Collections;
 using Cysharp.Threading.Tasks;
 using System;
 
-public class CharacterAtk : MonoBehaviour
+public class CharacterSkillAttack : MonoBehaviour
 {
     [SerializeField]
     Slider _atkSlider;
@@ -16,12 +16,15 @@ public class CharacterAtk : MonoBehaviour
     [Header("キャラクターID")]
     int _id;
 
+    [SerializeField]
+    Text _damageText;
+
     bool _atkPhase;
 
     private async void Start()
     {
         await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
-        _atkSlider.maxValue = SaveCharacterData.I.Agi[_id];
+        _atkSlider.maxValue = SaveCharacterData.I.Mp[_id];
         _atkSlider.value = _atkSlider.minValue;
         _atkPhase = true;
     }
@@ -32,26 +35,16 @@ public class CharacterAtk : MonoBehaviour
 
         if (_currentTime >= _atkSlider.maxValue)
         {
-            Debug.Log($"{SaveController.I.SavePath[_id]}が攻撃！");
+            Debug.Log("スキル攻撃ができるよ！");
 
             _currentTime = _atkSlider.minValue;
-            var damage = SaveCharacterData.I.Atk[_id] - SaveEnemyCharacterData.I.EnemyDef[0];
 
-            if(damage <= 0)
-            {
-                Debug.Log($"{SaveController.I.SavePath[_id]}の攻撃が効かなかった");
-            }
-            else
-            {
-                EnemyModel.I.Damage(damage);
-                CreateDamage.I.DamageText(damage);
-            }
         }
         else
         {
             _currentTime += Time.deltaTime;
         }
 
-        _atkSlider.value = _currentTime; 
+        _atkSlider.value = _currentTime;
     }
 }
