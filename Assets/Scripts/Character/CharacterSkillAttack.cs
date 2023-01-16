@@ -1,4 +1,3 @@
-using Ono.MVP.Model;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
