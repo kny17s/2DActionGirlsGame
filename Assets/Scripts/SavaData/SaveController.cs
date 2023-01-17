@@ -49,11 +49,9 @@ public class SaveController : MonoBehaviour
                     _name = _statusData.StatusDatas[i].Name,
                     _lv = _statusData.StatusDatas[i].Lv,
                     _hp = _statusData.StatusDatas[i].Hp,
-                    _mp = _statusData.StatusDatas[i].Mp,
+                    _sp = _statusData.StatusDatas[i].Mp,
                     _atk = _statusData.StatusDatas[i].Atk,
                     _def = _statusData.StatusDatas[i].Def,
-                    _magicAtk = _statusData.StatusDatas[i].MagicAtk,
-                    _magicDef = _statusData.StatusDatas[i].MagicDef,
                     _agi = _statusData.StatusDatas[i].Agi,
                 };
             }
@@ -78,11 +76,9 @@ public class SaveController : MonoBehaviour
                 _name = SaveCharacterData.I.Name[i],
                 _lv = SaveCharacterData.I.Lv[i],
                 _hp = SaveCharacterData.I.Hp[i],
-                _mp = SaveCharacterData.I.Mp[i],
+                _sp = SaveCharacterData.I.Sp[i],
                 _atk = SaveCharacterData.I.Atk[i],
                 _def = SaveCharacterData.I.Def[i],
-                _magicAtk = SaveCharacterData.I.Def[i],
-                _magicDef = SaveCharacterData.I.Def[i],
                 _agi = SaveCharacterData.I.Agi[i],
             };
 

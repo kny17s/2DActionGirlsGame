@@ -16,7 +16,10 @@ public class CreateDamage : MonoBehaviour
     GameObject[] _characterTarget;
 
     [SerializeField]
-    Vector3 _offSet;
+    Vector3 _enemyOffSet;
+
+    [SerializeField]
+    Vector3 _characterOffSet;
 
     public void Awake() => I = this;
 
@@ -25,7 +28,7 @@ public class CreateDamage : MonoBehaviour
     public void EnemyDamageText(float damage, int id)
     {
         //                      発生位置(本来なら敵のtransform.position)                            発生させたいテキスト
-        Instantiate(_damageText, _enemyTarget[id].transform.position + _offSet, transform.rotation).GetComponent<TextMesh>().text = damage.ToString();
+        Instantiate(_damageText, _enemyTarget[id].transform.position + _enemyOffSet, transform.rotation).GetComponent<TextMesh>().text = damage.ToString();
     }
 
     /// <summary>味方が受けたダメージをテキストで生成</summary>
@@ -33,7 +36,7 @@ public class CreateDamage : MonoBehaviour
     public void CharacterDamageText(float damage, int id)
     {
         //                      発生位置(本来なら敵のtransform.position)                            発生させたいテキスト
-        Instantiate(_damageText, _characterTarget[id].transform.position + _offSet, transform.rotation).GetComponent<TextMesh>().text = damage.ToString();
+        Instantiate(_damageText, _characterTarget[id].transform.position + _characterOffSet, transform.rotation).GetComponent<TextMesh>().text = damage.ToString();
     }
 
 }

@@ -10,7 +10,7 @@ public class BarrieEnemy : MonoBehaviour, IDamagable
 {
 	
 	[SerializeField]
-	bool _BarrieIsEnable = true;
+	bool _barrieIsEnable = true;
 
 	[SerializeField]
 	[Header("キャラクターのHpSlider")]
@@ -19,6 +19,7 @@ public class BarrieEnemy : MonoBehaviour, IDamagable
 	/// <summary>現在のHP</summary>
 	float _currentHp;
 
+	float _currentDamage;
 	async void Start()
 	{
 		await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
@@ -30,11 +31,18 @@ public class BarrieEnemy : MonoBehaviour, IDamagable
 
 	public void AddDamage(float damage)
     {
-		if (_BarrieIsEnable)
+		if (_barrieIsEnable)
         {
             Debug.Log("バリアを張っている ダメージを与えられない");
+			_currentDamage += damage;
+			if(_currentDamage >= 100)
+            {
+				_barrieIsEnable = false;
+				return;
+            }
             return;
         }
+
 
 		_currentHp -= damage;
 		_hpSlider.value = _currentHp;

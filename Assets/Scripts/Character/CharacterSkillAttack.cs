@@ -23,7 +23,7 @@ public class CharacterSkillAttack : MonoBehaviour
     private async void Start()
     {
         await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
-        _atkSlider.maxValue = SaveCharacterData.I.Mp[_id];
+        _atkSlider.maxValue = SaveCharacterData.I.Sp[_id];
         _atkSlider.value = _atkSlider.minValue;
         _atkPhase = true;
     }

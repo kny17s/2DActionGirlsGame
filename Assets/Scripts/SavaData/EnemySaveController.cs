@@ -51,8 +51,6 @@ public class EnemySaveController : MonoBehaviour
                     _enemyMp = _enemyStatusData.StatusDatas[i].Mp,
                     _enemyAtk = _enemyStatusData.StatusDatas[i].Atk,
                     _enemyDef = _enemyStatusData.StatusDatas[i].Def,
-                    _enemyMagicAtk = _enemyStatusData.StatusDatas[i].MagicAtk,
-                    _enemyMagicDef = _enemyStatusData.StatusDatas[i].MagicDef,
                     _enemyAgi = _enemyStatusData.StatusDatas[i].Agi,
                 };
             }
@@ -80,8 +78,6 @@ public class EnemySaveController : MonoBehaviour
                 _enemyMp = SaveEnemyCharacterData.I.EnemyMp[i],
                 _enemyAtk = SaveEnemyCharacterData.I.EnemyAtk[i],
                 _enemyDef = SaveEnemyCharacterData.I.EnemyDef[i],
-                _enemyMagicAtk = SaveEnemyCharacterData.I.EnemyDef[i],
-                _enemyMagicDef = SaveEnemyCharacterData.I.EnemyDef[i],
                 _enemyAgi = SaveEnemyCharacterData.I.EnemyAgi[i],
             };
 

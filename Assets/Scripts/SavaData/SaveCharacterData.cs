@@ -11,10 +11,8 @@ public class SaveData
     public float _hp;
     public float _atk;
     public float _def;
-    public float _magicAtk;
-    public float _magicDef;
     public float _agi;
-    public int _mp;
+    public int _sp;
 }
 
 public class SaveCharacterData : MonoBehaviour
@@ -24,8 +22,8 @@ public class SaveCharacterData : MonoBehaviour
     /// <summary>レベル</summary>
     public int[] Lv => _lv;
 
-    /// <summary>マジックポイント</summary>
-    public int[] Mp => _mp;
+    /// <summary>スキルポイント</summary>
+    public int[] Sp => _sp;
 
     /// <summary>素早さ</summary>
     public float[] Agi => _agi;
@@ -56,23 +54,15 @@ public class SaveCharacterData : MonoBehaviour
 
     [SerializeField]
     [Header("キャラクターの魔力")]
-    int[] _mp;
+    int[] _sp;
 
     [SerializeField]
     [Header("キャラクターの攻撃力")]
     float[] _atk;
 
     [SerializeField]
-    [Header("キャラクターの特殊攻撃力")]
-    float[] _magicAtk;
-
-    [SerializeField]
     [Header("キャラクターの防御力")]
     float[] _def;
-
-    [SerializeField]
-    [Header("キャラクターの特殊防御力")]
-    float[] _magicDef;
 
     [SerializeField]
     [Header("キャラクターの攻撃速度")]
@@ -87,10 +77,8 @@ public class SaveCharacterData : MonoBehaviour
         _hp[id] = saveData._hp;
         _atk[id] = saveData._atk;
         _def[id] = saveData._def;
-        _magicAtk[id] = saveData._magicAtk;
-        _magicDef[id] = saveData._magicDef;
         _agi[id] = saveData._agi;
-        _mp[id] = saveData._mp;
+        _sp[id] = saveData._sp;
     }
 
     /// <summary>レベルが上がった場合に反映</summary>
@@ -138,7 +126,7 @@ public class SaveCharacterData : MonoBehaviour
     /// <param name="id">キャラクターID</param>
     public void PlusSp(int Sp, int id)
     {
-        _mp[id] += Sp;
+        _sp[id] += Sp;
     }
 }
 

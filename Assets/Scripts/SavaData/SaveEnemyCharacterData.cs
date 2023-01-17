@@ -9,8 +9,6 @@ public class EnemySaveData
     public float _enemyHp;
     public float _enemyAtk;
     public float _enemyDef;
-    public float _enemyMagicAtk;
-    public float _enemyMagicDef;
     public float _enemyAgi;
     public int _enemyMp;
 }
@@ -61,16 +59,8 @@ public class SaveEnemyCharacterData : MonoBehaviour
     float[] _enemyAtk;
 
     [SerializeField]
-    [Header("キャラクターの特殊攻撃力")]
-    float[] _enemyMagicAtk;
-
-    [SerializeField]
     [Header("キャラクターの防御力")]
     float[] _enemyDef;
-
-    [SerializeField]
-    [Header("キャラクターの特殊防御力")]
-    float[] _enemyMagicDef;
 
     [SerializeField]
     [Header("キャラクターの攻撃速度")]
@@ -85,8 +75,6 @@ public class SaveEnemyCharacterData : MonoBehaviour
         _enemyHp[id] = enemySaveData._enemyHp;
         _enemyAtk[id] = enemySaveData._enemyAtk;
         _enemyDef[id] = enemySaveData._enemyDef;
-        _enemyMagicAtk[id] = enemySaveData._enemyMagicAtk;
-        _enemyMagicDef[id] = enemySaveData._enemyMagicDef;
         _enemyAgi[id] = enemySaveData._enemyAgi;
         _enemyMp[id] = enemySaveData._enemyMp;
     }
