@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(SaveController))]
+[CustomEditor(typeof(CharacterDataController))]
 public class SaveDataEditer : Editor
 {
 
@@ -13,7 +13,7 @@ public class SaveDataEditer : Editor
         //元のInspector部分を表示
         base.OnInspectorGUI();
 
-        SaveController saveController = target as SaveController;
+        CharacterDataController saveController = target as CharacterDataController;
 
         if (GUILayout.Button("キャラクター登録"))
         {

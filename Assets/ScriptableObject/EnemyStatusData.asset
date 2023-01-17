@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyStatusData
   m_EditorClassIdentifier: 
   _statusDatas:
-  - _name: "\u9B54\u6CD5\u5263\u58EB"
+  - _name: Y
     _lv: 50
     _hp: 300
     _mp: 250
@@ -22,7 +22,7 @@ MonoBehaviour:
     _def: 6
     _magicDef: 6
     _agi: 8
-  - _name: "\u5263\u58EB"
+  - _name: F
     _lv: 50
     _hp: 300
     _mp: 250
@@ -31,7 +31,7 @@ MonoBehaviour:
     _def: 6
     _magicDef: 6
     _agi: 8
-  - _name: "\u6226\u58EB"
+  - _name: H
     _lv: 50
     _hp: 300
     _mp: 250
@@ -40,7 +40,7 @@ MonoBehaviour:
     _def: 6
     _magicDef: 6
     _agi: 8
-  - _name: "\u9B54\u5C0E\u58EB"
+  - _name: K
     _lv: 50
     _hp: 300
     _mp: 250
