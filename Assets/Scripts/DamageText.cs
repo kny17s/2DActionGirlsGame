@@ -6,6 +6,7 @@ using System;
 public class DamageText : MonoBehaviour
 {
     [SerializeField]
+    [Header("Á‚¦‚é‚Ü‚Å‚ÌŠÔ")]
     float _delay;
 
     void Start()

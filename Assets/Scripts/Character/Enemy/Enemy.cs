@@ -28,7 +28,6 @@ public class Enemy : MonoBehaviour,IDamagable
 
 		_currentHp -= damage;
 		_hpSlider.value = _currentHp;
-		Debug.Log("add: " + damage + "hp: " + _currentHp);
 		CreateDamage.I.EnemyDamageText(damage, 0);
 		if (_currentHp <= 0)
 		{

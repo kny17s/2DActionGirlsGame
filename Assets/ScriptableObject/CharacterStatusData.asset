@@ -13,46 +13,46 @@ MonoBehaviour:
   m_Name: CharacterStatusData
   m_EditorClassIdentifier: 
   _statusDatas:
-  - _name: B
+  - _name: Asuka
     _lv: 50
     _hp: 150
-    _mp: 130
+    _mp: 90
     _atk: 10
     _magicAtk: 11
     _def: 6
     _magicDef: 6
     _agi: 4
-  - _name: A
+  - _name: Alice
     _lv: 50
     _hp: 125
-    _mp: 50
+    _mp: 80
     _atk: 16
     _magicAtk: 10
     _def: 5
     _magicDef: 6
     _agi: 5
-  - _name: C
+  - _name: Yui
     _lv: 50
     _hp: 110
-    _mp: 120
+    _mp: 75
     _atk: 8
     _magicAtk: 14
     _def: 6
     _magicDef: 8
     _agi: 5
-  - _name: Z
+  - _name: kirika
     _lv: 55
     _hp: 250
-    _mp: 125
+    _mp: 85
     _atk: 14
     _magicAtk: 15
     _def: 6
     _magicDef: 5
     _agi: 7
-  - _name: D
+  - _name: kaito
     _lv: 55
     _hp: 250
-    _mp: 125
+    _mp: 95
     _atk: 14
     _magicAtk: 15
     _def: 6

@@ -30,7 +30,6 @@ public class EnemyBoss : MonoBehaviour,IDamagable
     {
         _currentHp -= damage;
         _hpSlider.value = _currentHp;
-        Debug.Log("add: " + damage + "hp: " + _currentHp);
         CreateDamage.I.EnemyDamageText(damage, 2);
 
         if (_currentHp < 0 && _RestorableCount > 0)

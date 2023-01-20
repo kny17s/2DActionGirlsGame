@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyStatusData
   m_EditorClassIdentifier: 
   _statusDatas:
-  - _name: Y
+  - _name: Bandit
     _lv: 50
     _hp: 300
     _mp: 250
@@ -22,7 +22,7 @@ MonoBehaviour:
     _def: 6
     _magicDef: 6
     _agi: 8
-  - _name: F
+  - _name: Bandit_SwordsMan
     _lv: 50
     _hp: 300
     _mp: 250
@@ -31,7 +31,7 @@ MonoBehaviour:
     _def: 6
     _magicDef: 6
     _agi: 8
-  - _name: H
+  - _name: Bandit_Boss
     _lv: 50
     _hp: 300
     _mp: 250
@@ -40,7 +40,7 @@ MonoBehaviour:
     _def: 6
     _magicDef: 6
     _agi: 8
-  - _name: K
+  - _name: Bandit_Magician
     _lv: 50
     _hp: 300
     _mp: 250

@@ -16,7 +16,7 @@ public class EnemyDataController : MonoBehaviour
     [Header("初期ステータス")]
     StatusData _enemyStatus;
 
-    private void Start()
+    public void Start()
     {
         I = this;
         LoadingEnemyData();
@@ -56,7 +56,6 @@ public class EnemyDataController : MonoBehaviour
             }
 
             EnemySaveData.I.SetValueEnemyData(enemyData, i);
-
         }
     }
 

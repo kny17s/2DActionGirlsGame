@@ -6,25 +6,25 @@ using System;
 
 public class SkillAttack : MonoBehaviour
 {
+    public static SkillAttack I = null; 
     [SerializeField]
-    Slider _atkSlider;
+    Slider _skillSlider;
 
-    float _currentTime;
+    float _currentSp;
 
     [SerializeField]
     [Header("キャラクターID")]
     int _id;
 
-    [SerializeField]
-    Text _damageText;
-
     bool _atkPhase;
 
+    bool _skill = false;
     private async void Start()
     {
+        I = this;
         await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
-        _atkSlider.maxValue = CharacterSaveData.I.Sp[_id];
-        _atkSlider.value = _atkSlider.minValue;
+        _skillSlider.maxValue = CharacterSaveData.I.Sp[_id];
+        _skillSlider.value = 0;
         _atkPhase = true;
     }
 
@@ -32,18 +32,21 @@ public class SkillAttack : MonoBehaviour
     {
         await UniTask.WaitUntil(() => _atkPhase);
 
-        if (_currentTime >= _atkSlider.maxValue)
+        if (_currentSp >= _skillSlider.maxValue && _skill == false)
         {
-            Debug.Log("スキル攻撃ができるよ！");
-
-            _currentTime = _atkSlider.minValue;
-
+            Debug.Log("スキルが使えるよ");
+            _skill = true;
         }
         else
         {
-            _currentTime += Time.deltaTime;
+            _currentSp += (Time.deltaTime / 0.5f);
         }
 
-        _atkSlider.value = _currentTime;
+        _skillSlider.value = _currentSp;
+    }
+
+    public void UseSkill()
+    {
+        _skillSlider.value = _skillSlider.minValue;
     }
 }
