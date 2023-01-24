@@ -24,14 +24,13 @@ public class EnemyDataController : MonoBehaviour
 
     public void EnemyRgister()
     {
+        _enemySavePath = new();
+
         for (int i = 0; i < _enemyStatus.StatusDatas.Count; i++)
         {
             _enemySavePath.Add(_enemyStatus.StatusDatas[i].Name);
         }
     }
-
-    public void EnemyUnRegister() => _enemySavePath = new();
-
 
     /// <summary>セーブデータを読み込んで反映</summary>
     public void LoadingEnemyData()

@@ -35,7 +35,8 @@ public class Character : MonoBehaviour,IDamagable
 		_currentHp -= damage;
 		_hpSlider.value = _currentHp;
 		Debug.Log("Hp: " + _hpSlider.value);
-		CreateDamage.I.CharacterDamageText(damage, _id);
+		var num = UnityEngine.Random.Range(0,5);
+		CreateDamage.I.CharacterDamageText(damage, num);
 		if (_hpSlider.value <= 0)
 		{
 			Debug.Log($"{CharacterDataController.I.SavePath[_id]}‚ÌHp‚ª‚È‚­‚È‚è‚Ü‚µ‚½");

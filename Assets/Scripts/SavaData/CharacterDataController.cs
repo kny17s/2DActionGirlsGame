@@ -25,14 +25,13 @@ public class CharacterDataController : MonoBehaviour
 
     public void Rgister()
     {
+        _savePath = new();
+
         for (int i = 0; i < _statusData.StatusDatas.Count; i++)
         {
             _savePath.Add(_statusData.StatusDatas[i].Name);
         }
     }
-
-    public void UnRegister() => _savePath = new();
-
 
     /// <summary>セーブデータを読み込んで反映</summary>
     public void LoadingCharacterData()

@@ -15,14 +15,9 @@ public class EnemySavaDataEditer : Editor
 
         EnemyDataController enemySaveController = target as EnemyDataController;
 
-        if (GUILayout.Button("キャラクター登録"))
+        if (GUILayout.Button("キャラクター再登録"))
         {
             enemySaveController.EnemyRgister();
-        }
-
-        if (GUILayout.Button("キャラクター登録解除"))
-        {
-            enemySaveController.EnemyUnRegister();
         }
     }
 

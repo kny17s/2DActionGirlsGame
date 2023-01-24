@@ -15,14 +15,9 @@ public class SaveDataEditer : Editor
 
         CharacterDataController saveController = target as CharacterDataController;
 
-        if (GUILayout.Button("キャラクター登録"))
+        if (GUILayout.Button("キャラクター再登録"))
         {
             saveController.Rgister();
-        }
-
-        if (GUILayout.Button("キャラクター登録解除"))
-        {
-            saveController.UnRegister();
         }
     }
 

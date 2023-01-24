@@ -13,6 +13,24 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     GameObject _allCharaPanel;
 
+    [SerializeField]
+    GameObject _charaProfilePanel;
+
+    [SerializeField]
+    Text _nameText;
+
+    [SerializeField]
+    Text _sizeText;
+
+    [SerializeField]
+    Text _birthdayText;
+
+    [SerializeField]
+    Text _likeText;
+
+    [SerializeField]
+    CharaProfile _charaProfile;
+
     public void Awake()
     {
         if (I == null)
@@ -44,5 +62,20 @@ public class UIManager : MonoBehaviour
     public void CloseAllCharaPanel()
     {
         _allCharaPanel.SetActive(false);
+    }
+
+    public void OpenCharaProFilePanel(int id)
+    {
+        _nameText.text = _charaProfile.Profile[id].Name;
+        _sizeText.text = _charaProfile.Profile[id].Size;
+        _birthdayText.text = _charaProfile.Profile[id].Birthday;
+        _likeText.text = _charaProfile.Profile[id].Like;
+
+        _charaProfilePanel.SetActive(true);
+    }
+
+    public void CloseCharaProFilePanel()
+    {
+        _charaProfilePanel.SetActive(false);
     }
 }

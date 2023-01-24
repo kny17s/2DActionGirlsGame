@@ -46,18 +46,20 @@ public class CharacterSelecter : MonoBehaviour
     {
         if (_characterSprite.Count == _partyMax)
         {
-            _playButton.gameObject.SetActive(true);
             Debug.Log("これ以上は追加できません");
         }
         if (_characterSprite.Count < _partyMax)
         {
-            _playButton.gameObject.SetActive(false);
             _characterSprite.Add(_characterMaterial[num]);
             _charaNum.Add(num);
             Instantiate(_charaPrefabs[num],_parentObject);
             if (_characterSprite.Count == _partyMax)
             {
                 _playButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                _playButton.gameObject.SetActive(false);
             }
         }
     }
