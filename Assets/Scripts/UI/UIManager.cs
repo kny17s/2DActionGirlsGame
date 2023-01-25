@@ -31,6 +31,11 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     CharaProfile _charaProfile;
 
+    [SerializeField]
+    GameObject _gachaPanel;
+
+    [SerializeField]
+
     public void Awake()
     {
         if (I == null)
@@ -77,5 +82,15 @@ public class UIManager : MonoBehaviour
     public void CloseCharaProFilePanel()
     {
         _charaProfilePanel.SetActive(false);
+    }
+
+    public void OpenGachaPanel()
+    {
+        _gachaPanel.SetActive(true);
+    }
+
+    public void CloseGachaPanel()
+    {
+        _gachaPanel.SetActive(false);
     }
 }

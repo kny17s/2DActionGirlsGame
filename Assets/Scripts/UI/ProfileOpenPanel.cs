@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class RemoveChara : MonoBehaviour, IPointerClickHandler
+public class ProfileOpenPanel : MonoBehaviour,IPointerClickHandler
 {
     [SerializeField]
     [Header("キャラクターID")]
@@ -13,7 +13,9 @@ public class RemoveChara : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        UsableCharacter.I.Reduction(_id);
-        Destroy(this.gameObject);
+        if (_chara)
+        {
+            UIManager.I.OpenCharaProFilePanel(_id);
+        }
     }
 }

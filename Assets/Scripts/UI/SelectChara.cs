@@ -15,7 +15,7 @@ public class SelectChara : MonoBehaviour,IPointerClickHandler
     {
         if (_chara)
         {
-            CharacterSelecter.I.AddCharacter(_id);
+            UsableCharacter.I.AddCharacter(_id);
         }
     }
 }

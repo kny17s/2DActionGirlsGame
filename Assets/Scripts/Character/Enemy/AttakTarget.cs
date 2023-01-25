@@ -25,7 +25,6 @@ public class AttakTarget : MonoBehaviour
     [SerializeField]
     Transform _parentObject;
 
-
     [SerializeField]
     List<Image> _characterImage = new();
 
@@ -35,9 +34,9 @@ public class AttakTarget : MonoBehaviour
     private void Awake()
     {
         I = this;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < UsableCharacter.I.CharaNum.Count; i++)
         {
-            var j = CharacterSelecter.I.CharaNum[i];
+            var j = UsableCharacter.I.CharaNum[i];
             switch (j)
             {
                 case 0:

@@ -3,17 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterSelecter : MonoBehaviour
+public class UsableCharacter : MonoBehaviour
 {
-    public static CharacterSelecter I = null;
-
-    public List<Sprite> CharacterSprite => _characterSprite;
+    public static UsableCharacter I = null;
 
     public List<int> CharaNum => _charaNum;
-
-    [SerializeField]
-    [Header("選択したキャラクター一覧")]
-    List<Sprite> _characterSprite = new List<Sprite>();
 
     [SerializeField]
     [Header("キャラクターイメージ")]
@@ -33,6 +27,15 @@ public class CharacterSelecter : MonoBehaviour
     [SerializeField]
     Button _playButton;
 
+    [SerializeField]
+    Transform _parent;
+
+    [SerializeField]
+    List<GameObject> _hasCharacter;
+
+    [SerializeField]
+    GameObject[] _gachaCharacter;
+
     private void Awake()
     {
         if (I == null)
@@ -44,16 +47,15 @@ public class CharacterSelecter : MonoBehaviour
 
     public void AddCharacter(int num)
     {
-        if (_characterSprite.Count == _partyMax)
+        if (_charaNum.Count == _partyMax)
         {
             Debug.Log("これ以上は追加できません");
         }
-        if (_characterSprite.Count < _partyMax)
+        if (_charaNum.Count < _partyMax)
         {
-            _characterSprite.Add(_characterMaterial[num]);
             _charaNum.Add(num);
             Instantiate(_charaPrefabs[num],_parentObject);
-            if (_characterSprite.Count == _partyMax)
+            if (_charaNum.Count == _partyMax)
             {
                 _playButton.gameObject.SetActive(true);
             }
@@ -66,11 +68,32 @@ public class CharacterSelecter : MonoBehaviour
 
     public void Reduction(int num)
     {
-        if(_characterSprite.Count <= _partyMax)
+        if(_charaNum.Count <= _partyMax)
         {
             _playButton.gameObject.SetActive(false);
-            _characterSprite.Remove(_characterMaterial[num]);
             _charaNum.Remove(num);
         }
+    }
+
+    public void GachaTen()
+    {
+        for(int i = 0; i < 10; i++)
+        {
+            var num = Random.Range(0, _gachaCharacter.Length);
+            Debug.Log(num);
+            _hasCharacter.Add(_gachaCharacter[num]);
+            Instantiate(_gachaCharacter[num], _parent);
+        }
+
+
+    }
+
+    public void Gacha()
+    {
+        var num = Random.Range(0, _gachaCharacter.Length);
+        Debug.Log(num);
+        _hasCharacter.Add(_gachaCharacter[num]);
+        Instantiate(_gachaCharacter[num], _parent);
+
     }
 }
