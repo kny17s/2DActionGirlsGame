@@ -27,7 +27,6 @@ public class CreateDamage : MonoBehaviour
     /// <param name="damage">ダメージ量</param>
     public void EnemyDamageText(float damage, int id)
     {
-        //                      発生位置(本来なら敵のtransform.position)                            発生させたいテキスト
         Instantiate(_damageText[0], _enemyTarget[id].transform.position + _enemyOffSet, transform.rotation).GetComponent<TextMesh>().text = damage.ToString();
     }
 
@@ -35,7 +34,6 @@ public class CreateDamage : MonoBehaviour
     /// <param name="damage">ダメージ量</param>
     public void CharacterDamageText(float damage, int id)
     {
-        //                      発生位置(本来なら敵のtransform.position)                            発生させたいテキスト
         Instantiate(_damageText[1], _characterTarget[id].transform.position + _characterOffSet, transform.rotation).GetComponent<TextMesh>().text = damage.ToString();
     }
 

@@ -35,7 +35,7 @@ public class BarrieEnemy : MonoBehaviour, IDamagable
         {
             Debug.Log("バリアを張っている ダメージを与えられない");
 			_currentDamage += damage;
-			if(_currentDamage >= 100)
+			if(_currentDamage >= 50)
             {
 				Debug.Log("バリアが壊れた　ダメージを与えられる");
 				_barrieIsEnable = false;
@@ -50,7 +50,7 @@ public class BarrieEnemy : MonoBehaviour, IDamagable
 		CreateDamage.I.EnemyDamageText(damage, 1);
 		if (_currentHp <= 0)
         {
-            Debug.Log("BarrieEnemyを倒した");
+			Debug.Log("BarrieEnemyを倒した");
         }
     }
 }

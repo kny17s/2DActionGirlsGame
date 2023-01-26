@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class Character : MonoBehaviour,IDamagable
 {
+	public static Character I = null;
+	public Image CharaImage => _charaImage;
 
 	[SerializeField]
 	[Header("キャラクターのHpSlider")]
@@ -19,8 +21,11 @@ public class Character : MonoBehaviour,IDamagable
 
 	float _currentHp;
 
-	async void Start()
+	[SerializeField]
+	Image _charaImage;
+    async void Start()
 	{
+		I = this;
 		await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
 
 		_hpSlider.maxValue = CharacterSaveData.I.Hp[_id];
@@ -39,6 +44,7 @@ public class Character : MonoBehaviour,IDamagable
 		CreateDamage.I.CharacterDamageText(damage, num);
 		if (_hpSlider.value <= 0)
 		{
+			_charaImage.color = Color.gray;
 			Debug.Log($"{CharacterDataController.I.SavePath[_id]}のHpがなくなりました");
 		}
 	}

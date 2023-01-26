@@ -36,18 +36,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
 
-    public void Awake()
-    {
-        if (I == null)
-        {
-            I = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
+    public void Awake() => I = this;
 
     public void OpenPartySelectPanel()
     {

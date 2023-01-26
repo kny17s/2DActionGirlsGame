@@ -18,6 +18,9 @@ public class EnemyAttack : MonoBehaviour
 
 	bool _atkPhase;
 
+	[SerializeField]
+	Text _attackTimeText;
+
 	private async void Start()
 	{
 		await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
@@ -28,6 +31,8 @@ public class EnemyAttack : MonoBehaviour
 	async void Update()
 	{
 		await UniTask.WaitUntil(() => _atkPhase);
+
+		_attackTimeText.text = _atkSlider.value.ToString("f0");
 
 		if (_currentTime >= _atkSlider.maxValue)
 		{

@@ -23,6 +23,9 @@ public class CharacterAttack : MonoBehaviour
 	[Header("キャラクターID")]
 	int _id;
 
+	const float _chargeSp = 3;
+
+	const float _addSp = 20;
 	private async void Start()
 	{
 		await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
@@ -30,7 +33,7 @@ public class CharacterAttack : MonoBehaviour
 		_atkSlider.value = _atkSlider.minValue;
 
 		_skillSlider.maxValue = CharacterSaveData.I.Sp[_id];
-		_skillSlider.value = 0;
+		_skillSlider.value = _skillSlider.minValue;
 
 	}
 
@@ -57,6 +60,7 @@ public class CharacterAttack : MonoBehaviour
 				if (damagetarget != null)
 				{
 					AttakTarget.I.Enemy[num].GetComponent<IDamagable>().AddDamage(damage);
+					_skillSlider.value += _addSp;
 				}
 			}
 		}
@@ -71,12 +75,11 @@ public class CharacterAttack : MonoBehaviour
 		if (_currentSp >= _skillSlider.maxValue && _skill == false)
 		{
 			Debug.Log("スキルが使用可能です");
-			//animation.SetBoolでキャラクターフレームを点滅させる
 			_skill = true;
 		}
 		else
 		{
-			_currentSp += Time.deltaTime;
+			_currentSp += (Time.deltaTime * _chargeSp);
 		}
 
 		_skillSlider.value = _currentSp;
@@ -85,7 +88,6 @@ public class CharacterAttack : MonoBehaviour
 	public void UseSkill()
 	{
 		_skillSlider.value = _skillSlider.minValue;
-		//animationを止め非表示にする
 		_skill = false;
 	}
 }

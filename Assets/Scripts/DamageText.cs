@@ -11,9 +11,9 @@ public class DamageText : MonoBehaviour
 
     void Start()
     {
-        var x = UnityEngine.Random.Range(-90, 90);
+        //var x = UnityEngine.Random.Range(-90, 90);
         var y = UnityEngine.Random.Range(100, 280);
-        GetComponent<Rigidbody2D>().AddForce(new Vector3(x, y, 0));
+        GetComponent<Rigidbody2D>().AddForce(new Vector3(0, y, 0));
         DestroyObject();
     }
 
