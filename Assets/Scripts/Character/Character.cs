@@ -23,6 +23,7 @@ public class Character : MonoBehaviour,IDamagable
 
 	[SerializeField]
 	Image _charaImage;
+
     async void Start()
 	{
 		I = this;

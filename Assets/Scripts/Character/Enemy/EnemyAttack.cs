@@ -24,8 +24,11 @@ public class EnemyAttack : MonoBehaviour
 	private async void Start()
 	{
 		await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
+
 		_atkSlider.maxValue = EnemySaveData.I.EnemyAgi[_id];
-		_atkSlider.value = _atkSlider.minValue;
+		_atkSlider.value = _atkSlider.maxValue;
+		_currentTime = _atkSlider.maxValue;
+
 		_atkPhase = true;
 	}
 	async void Update()
@@ -34,10 +37,10 @@ public class EnemyAttack : MonoBehaviour
 
 		_attackTimeText.text = _atkSlider.value.ToString("f0");
 
-		if (_currentTime >= _atkSlider.maxValue)
+		if (_currentTime <= _atkSlider.minValue)
 		{
 			Debug.Log($"{EnemyDataController.I.EnemySavePath[_id]}‚ªUŒ‚I");
-			_currentTime = _atkSlider.minValue;
+			_currentTime = _atkSlider.maxValue;
 			var damage = EnemySaveData.I.EnemyAtk[_id] - CharacterSaveData.I.Def[0];
 
 			if (damage <= 0)
@@ -58,7 +61,7 @@ public class EnemyAttack : MonoBehaviour
 		}
 		else
 		{
-			_currentTime += Time.deltaTime;
+			_currentTime -= Time.deltaTime;
 		}
 
 		_atkSlider.value = _currentTime;
