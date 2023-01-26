@@ -26,6 +26,8 @@ public class CharacterAttack : MonoBehaviour
 	const float _chargeSp = 3;
 
 	const float _addSp = 20;
+
+
 	private async void Start()
 	{
 		await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
@@ -37,8 +39,10 @@ public class CharacterAttack : MonoBehaviour
 
 	}
 
-	private void Update()
+	private async void Update()
 	{
+		await UniTask.WaitUntil(() => !Character.I.Death);
+
 		if (_currentTime >= _atkSlider.maxValue)
 		{
 			Debug.Log($"{CharacterDataController.I.SavePath[_id]}‚ªUŒ‚I");

@@ -11,7 +11,9 @@ public class Character : MonoBehaviour,IDamagable
 	public static Character I = null;
 	public Image CharaImage => _charaImage;
 
-	[SerializeField]
+    public bool Death => _death;
+
+    [SerializeField]
 	[Header("キャラクターのHpSlider")]
 	Slider _hpSlider;
 
@@ -23,6 +25,9 @@ public class Character : MonoBehaviour,IDamagable
 
 	[SerializeField]
 	Image _charaImage;
+
+	[SerializeField]
+	bool _death = false;
 
     async void Start()
 	{
@@ -46,6 +51,7 @@ public class Character : MonoBehaviour,IDamagable
 		if (_hpSlider.value <= 0)
 		{
 			_charaImage.color = Color.gray;
+			_death = true;
 			Debug.Log($"{CharacterDataController.I.SavePath[_id]}のHpがなくなりました");
 		}
 	}

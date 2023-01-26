@@ -7,7 +7,7 @@ public class UsableCharacter : MonoBehaviour
 {
     public static UsableCharacter I = null;
 
-    public List<int> CharaNum => _charaNum;
+    public List<int> CharaNum => _charaID;
 
     [SerializeField]
     [Header("キャラクターイメージ")]
@@ -22,7 +22,10 @@ public class UsableCharacter : MonoBehaviour
     GameObject[] _charaPrefabs;
 
     [SerializeField]
-    List<int> _charaNum = new();
+    GameObject[] _selectChara;
+
+    [SerializeField]
+    List<int> _charaID = new();
 
     [SerializeField]
     Button _playButton;
@@ -31,31 +34,34 @@ public class UsableCharacter : MonoBehaviour
     Transform _parent;
 
     [SerializeField]
+    Transform _charaSelectParent;
+
+    [SerializeField]
     List<GameObject> _hasCharacter;
 
     [SerializeField]
     GameObject[] _gachaCharacter;
 
+    [SerializeField]
+    int[] _charaNum;
+
     private void Awake()
     {
-        if (I == null)
-        {
-            I = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
+        I = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void AddCharacter(int num)
     {
-        if (_charaNum.Count == _partyMax)
+        if (_charaID.Count == _partyMax)
         {
             Debug.Log("これ以上は追加できません");
         }
-        if (_charaNum.Count < _partyMax)
+        if (_charaID.Count < _partyMax)
         {
-            _charaNum.Add(num);
+            _charaID.Add(num);
             Instantiate(_charaPrefabs[num],_parentObject);
-            if (_charaNum.Count == _partyMax)
+            if (_charaID.Count == _partyMax)
             {
                 _playButton.gameObject.SetActive(true);
             }
@@ -68,10 +74,10 @@ public class UsableCharacter : MonoBehaviour
 
     public void Reduction(int num)
     {
-        if(_charaNum.Count <= _partyMax)
+        if(_charaID.Count <= _partyMax)
         {
             _playButton.gameObject.SetActive(false);
-            _charaNum.Remove(num);
+            _charaID.Remove(num);
         }
     }
 
@@ -81,11 +87,18 @@ public class UsableCharacter : MonoBehaviour
         {
             var num = Random.Range(0, _gachaCharacter.Length);
             Debug.Log(num);
-            _hasCharacter.Add(_gachaCharacter[num]);
-            Instantiate(_gachaCharacter[num], _parent);
+            if (!_hasCharacter.Contains(_gachaCharacter[num]))
+            {
+                _hasCharacter.Add(_gachaCharacter[num]);
+                Instantiate(_gachaCharacter[num], _parent);
+                Instantiate(_selectChara[num], _charaSelectParent);
+            }
+            else
+            {
+                Debug.Log($"ID：{num}のキャラが重複しました。");
+                _charaNum[num]++;
+            }
         }
-
-
     }
 
     public void Gacha()
@@ -94,6 +107,5 @@ public class UsableCharacter : MonoBehaviour
         Debug.Log(num);
         _hasCharacter.Add(_gachaCharacter[num]);
         Instantiate(_gachaCharacter[num], _parent);
-
     }
 }
