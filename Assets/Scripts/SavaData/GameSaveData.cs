@@ -2,8 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CI.QuickSave;
+
 public class GameSaveData : MonoBehaviour
 {
+    [SerializeField]
+    string _nameKey;
+
+    [SerializeField]
+    string _positionKey;
+
+    [SerializeField]
+    string _timeKey;
+
+    [SerializeField]
+    GameObject _gb;
     private void Start()
     {
         // データの保存先をApplication.dataPathに変更
@@ -25,12 +37,18 @@ public class GameSaveData : MonoBehaviour
         QuickSaveWriter writer = QuickSaveWriter.Create("Player", settings);
 
         // データを書き込む
-        writer.Write("Name", "Raiun");
+       /* writer.Write("Name", "Raiun");
         writer.Write("Position", Vector3.zero);
         writer.Write("Time", 30);
+        */
+
+        writer.Write(_nameKey, "Aoi");
+        writer.Write(_positionKey, new Vector3(1,1,1));
+        writer.Write(_timeKey, 25);
 
         // 変更を反映
         writer.Commit();
+
         // QuickSaveReaderのインスタンスを作成
         QuickSaveReader reader = QuickSaveReader.Create("Player", settings);
 

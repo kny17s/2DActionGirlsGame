@@ -58,6 +58,8 @@ public class CharacterAttack : MonoBehaviour
 
 			else
 			{
+				Animator anim = AttakTarget.I._CharacterImage[0].GetComponent<Animator>();
+				anim.SetTrigger("Attack");
 				//animation‚ÅUŒ‚ƒ‚[ƒVƒ‡ƒ“‚ğÄ¶
 				var damagetarget = AttakTarget.I.Enemy[num].GetComponent<IDamagable>();
 

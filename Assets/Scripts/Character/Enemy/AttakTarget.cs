@@ -11,6 +11,8 @@ public class AttakTarget : MonoBehaviour
 
     public List<GameObject> Character => _character;
 
+    public List<GameObject> _CharacterImage => _characterImage;
+
     [SerializeField]
     [Header("敵の種類")]
     List<GameObject> _enemy = new();
@@ -20,13 +22,16 @@ public class AttakTarget : MonoBehaviour
     List<GameObject> _character = new();
 
     [SerializeField]
+    List<GameObject>_characterImage;
+
+    [SerializeField]
+    List<Image> _image = new();
+
+    [SerializeField]
     GameObject[] _characterObjectData;
 
     [SerializeField]
     Transform _parentObject;
-
-    [SerializeField]
-    List<Image> _characterImage = new();
 
     [SerializeField]
     Transform[] _parentImage;
@@ -34,6 +39,7 @@ public class AttakTarget : MonoBehaviour
     private void Awake()
     {
         I = this;
+
         for (int i = 0; i < UsableCharacter.I.CharaNum.Count; i++)
         {
             var j = UsableCharacter.I.CharaNum[i];
@@ -50,14 +56,15 @@ public class AttakTarget : MonoBehaviour
                 case 8:
                 case 9:
                 case 10:
+                    Instantiate(_image[j], _parentImage[i]);
                     Instantiate(_characterObjectData[j], _parentObject);
-                    //var num = Random.Range(0, _parentImage.Length);
-                    //Instantiate(_characterImage[j], _parentImage[num]);
                     break;
                 default:
                     Debug.LogError("error　error　error　error　error　error");
                     break;
             }
+
+            GetImageChildren(_parentImage[i].gameObject);
         }
 
         GetChildren(_parentObject.gameObject);
@@ -76,6 +83,22 @@ public class AttakTarget : MonoBehaviour
         {
             //子要素をaddする
             _character.Add(childobj.gameObject);
+        }
+    }
+
+    public void GetImageChildren(GameObject obj)
+    {
+        Transform children = obj.GetComponentInChildren<Transform>();
+        //子要素がいなければ終了
+        if (children.childCount == 0)
+        {
+            return;
+        }
+
+        foreach (Transform childobj in children)
+        {
+            //子要素をaddする
+            _characterImage.Add(childobj.gameObject);
         }
     }
 }
