@@ -12,15 +12,15 @@
 現在製作中です。
 
 ## 使用言語、環境
-# ・C＃、Unity
-# ・VisualStudio
-# ・Windows11
+C＃、Unity
+VisualStudio
+Windows11
 
 ## 使い方
-# プレイ方法（製作中）
+プレイ方法（製作中）
 
 ## 対応端末
-# ・pc
+pc
 
 ## こだわりポイント
 ・セーブ機能でJsonを使用したことです。
