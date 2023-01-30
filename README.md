@@ -1,5 +1,5 @@
-プロジェクト名
-:2DActionGirlsGame
+＃プロジェクト名
+：2DActionGirlsGame
 
 
 プロジェクトの概要
