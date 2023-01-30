@@ -18,7 +18,7 @@
 
 [プレイ方法](https://github.com/kny17s/2DActionGirlsGame/blob/main/README.md#%E3%83%97%E3%83%AC%E3%82%A4%E6%96%B9%E6%B3%95)
 
-[対応端末]()
+[対応端末](https://github.com/kny17s/2DActionGirlsGame/blob/main/README.md#%E5%AF%BE%E5%BF%9C%E7%AB%AF%E6%9C%AB)
 
 [こだわりポイント](https://github.com/kny17s/2DActionGirlsGame/blob/main/README.md#%E3%81%93%E3%81%A0%E3%82%8F%E3%82%8A%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88)
 
