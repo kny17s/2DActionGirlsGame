@@ -1,5 +1,5 @@
-## プロジェクト名
-# 2DActionGirlsGame
+
+## 2DActionGirlsGame
 
 ## プロジェクトの概要
 ・キャラを選択して
