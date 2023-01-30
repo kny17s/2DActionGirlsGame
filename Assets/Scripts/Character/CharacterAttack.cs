@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class CharacterAttack : MonoBehaviour
 {
+	public bool Skill => _skill;
+
 	[SerializeField]
 	Slider _atkSlider;
 
@@ -27,9 +29,12 @@ public class CharacterAttack : MonoBehaviour
 
 	const float _addSp = 20;
 
+	Character _character;
 
-	private async void Start()
+    private async void Start()
 	{
+		_character = this.gameObject.GetComponent<Character>();
+
 		await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
 		_atkSlider.maxValue = CharacterSaveData.I.Agi[_id];
 		_atkSlider.value = _atkSlider.minValue;
@@ -39,10 +44,47 @@ public class CharacterAttack : MonoBehaviour
 
 	}
 
-	private async void Update()
+	private void Update()
 	{
-		await UniTask.WaitUntil(() => !Character.I.Death);
+		if (!_character.Death)
+		{
+			Attack();
+		}
+	}
 
+	public void UseSkill()
+	{
+		_currentSp = _skillSlider.minValue;
+		_skillSlider.value = _currentSp;
+
+		_skill = false;
+
+		var num = UnityEngine.Random.Range(0, AttakTarget.I.Enemy.Count);
+		var damage = (CharacterSaveData.I.Atk[_id] * 2) - EnemySaveData.I.EnemyDef[num];
+
+		if (damage <= 0)
+		{
+			Debug.Log($"{CharacterDataController.I.SavePath[_id]}の攻撃が効かなかった");
+		}
+
+		else
+		{
+			var i = UnityEngine.Random.Range(0, 5);//_idを使う
+			//Animator anim = AttakTarget.I._CharacterImage[i].GetComponent<Animator>();
+			//anim.SetTrigger("Attack");
+
+			var damagetarget = AttakTarget.I.Enemy[num].GetComponent<IDamagable>();
+
+			if (damagetarget != null)
+			{
+				AttakTarget.I.Enemy[num].GetComponent<IDamagable>().AddDamage(damage);
+				_skillSlider.value += (_addSp * 2);
+			}
+		}
+	}
+
+	public async void Attack()
+    {
 		if (_currentTime >= _atkSlider.maxValue)
 		{
 			Debug.Log($"{CharacterDataController.I.SavePath[_id]}が攻撃！");
@@ -58,9 +100,11 @@ public class CharacterAttack : MonoBehaviour
 
 			else
 			{
-				Animator anim = AttakTarget.I._CharacterImage[0].GetComponent<Animator>();
+				var i = UnityEngine.Random.Range(0, 5);
+				Animator anim = AttakTarget.I._CharacterImage[i].GetComponent<Animator>();
 				anim.SetTrigger("Attack");
-				//animationで攻撃モーションを再生
+				await UniTask.Delay(TimeSpan.FromSeconds(1f));
+
 				var damagetarget = AttakTarget.I.Enemy[num].GetComponent<IDamagable>();
 
 				if (damagetarget != null)
@@ -78,7 +122,7 @@ public class CharacterAttack : MonoBehaviour
 		_atkSlider.value = _currentTime;
 
 
-		if (_currentSp >= _skillSlider.maxValue && _skill == false)
+		if (_skillSlider.value == _skillSlider.maxValue && _skill == false)
 		{
 			Debug.Log("スキルが使用可能です");
 			_skill = true;
@@ -89,11 +133,5 @@ public class CharacterAttack : MonoBehaviour
 		}
 
 		_skillSlider.value = _currentSp;
-	}
-
-	public void UseSkill()
-	{
-		_skillSlider.value = _skillSlider.minValue;
-		_skill = false;
 	}
 }

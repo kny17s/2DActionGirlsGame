@@ -48,6 +48,7 @@ public class Character : MonoBehaviour,IDamagable
 		Debug.Log("Hp: " + _hpSlider.value);
 		var num = UnityEngine.Random.Range(0,5);
 		CreateDamage.I.CharacterDamageText(damage, num);
+
 		if (_hpSlider.value <= 0)
 		{
 			_charaImage.color = Color.gray;

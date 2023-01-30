@@ -369,6 +369,7 @@ GameObject:
   - component: {fileID: 3865794524585326619}
   - component: {fileID: 4017241605494002657}
   - component: {fileID: 4448721188190974421}
+  - component: {fileID: 891811569150062772}
   m_Layer: 5
   m_Name: CharacterImage_4
   m_TagString: Untagged
@@ -452,6 +453,7 @@ MonoBehaviour:
   _hpSlider: {fileID: 1760577790605175608}
   _id: 4
   _charaImage: {fileID: 3865794524585326619}
+  _death: 0
 --- !u!114 &4448721188190974421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,6 +469,18 @@ MonoBehaviour:
   _atkSlider: {fileID: 1137495233578975022}
   _skillSlider: {fileID: 6241988395294766098}
   _id: 4
+--- !u!114 &891811569150062772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2207663861745765112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ac74e5b2dc958247bef7a841d54f7b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3388531462505262704
 GameObject:
   m_ObjectHideFlags: 0
