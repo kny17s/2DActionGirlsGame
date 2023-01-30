@@ -27,7 +27,9 @@
 ## 使用言語、環境
 
 C＃、Unity
+
 VisualStudio
+
 Windows11
 
 ## プレイ方法
