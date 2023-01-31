@@ -13,43 +13,43 @@ MonoBehaviour:
   m_Name: CharaProfile
   m_EditorClassIdentifier: 
   _profile:
-  - _name: "\u30EB\u30B7\u30D5\u30A7\u30EB"
+  - _name: "\u3042\u3059\u304B"
     _birthday: ???
     _size: "175\u339D"
     _like: "\u4EF2\u9593"
-  - _name: "\u30DE\u30E2\u30F3"
+  - _name: "\u3042\u308A\u3059"
     _birthday: ???
     _size: 165cm
     _like: "\u7814\u7A76\u30FB\u5B9F\u9A13"
-  - _name: "\u30EC\u30F4\u30A3\u30A2\u30BF\u30F3\uFF08\u30EC\u30F4\u30A3\uFF09"
+  - _name: "\u3086\u3044"
     _birthday: ???
     _size: "160\u339D"
-    _like: "\u5168\u3066"
-  - _name: xZcxc
+    _like: "\u3053\u3069\u3082"
+  - _name: "\u304D\u308A\u304B"
+    _birthday: a
+    _size: 120
+    _like: "\u308A\u3093\u3054"
+  - _name: "\u304B\u3044\u3068"
+    _birthday: a
+    _size: 120
+    _like: "\u97F3\u697D"
+  - _name: "\u307E\u306A"
+    _birthday: a
+    _size: 120
+    _like: "\u82B1"
+  - _name: "\u308A\u304A\u3093"
     _birthday: a
     _size: 120
     _like: a
-  - _name: zxfcgv
+  - _name: "\u308A\u304B"
     _birthday: a
     _size: 120
-    _like: a
-  - _name: Zxcfdsgr
+    _like: "\u82B1\u706B"
+  - _name: "\u3055\u3089"
     _birthday: a
     _size: 120
-    _like: a
-  - _name: sdfgh
+    _like: "\u6226\u3044"
+  - _name: "\u3057\u305A\u304B"
     _birthday: a
     _size: 120
-    _like: a
-  - _name: Shop
-    _birthday: a
-    _size: 120
-    _like: a
-  - _name: "\uFF4C\uFF4B\uFF4A\uFF48\uFF47\uFF46\uFF44"
-    _birthday: a
-    _size: 120
-    _like: a
-  - _name: "\uFF4B\uFF4A\uFF48\uFF47\uFF46"
-    _birthday: a
-    _size: 120
-    _like: a
+    _like: "\u663C\u5BDD"

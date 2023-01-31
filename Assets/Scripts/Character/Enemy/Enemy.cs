@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour,IDamagable
 {
+	public bool Death => _death;
+
 	[SerializeField]
 	[Header("キャラクターのHpSlider")]
     Slider _hpSlider;
@@ -14,7 +16,10 @@ public class Enemy : MonoBehaviour,IDamagable
 	/// <summary>現在のHP</summary>
 	float _currentHp;
 
-	async void Start()
+	[SerializeField]
+	bool _death = false;
+
+    async void Start()
 	{
 		await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
 
@@ -29,8 +34,10 @@ public class Enemy : MonoBehaviour,IDamagable
 		_currentHp -= damage;
 		_hpSlider.value = _currentHp;
 		CreateDamage.I.EnemyDamageText(damage, 0);
+
 		if (_currentHp <= 0)
 		{
+			_death = true;
 			Debug.Log("Enemyを倒した");
 		}
 	}

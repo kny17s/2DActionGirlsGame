@@ -15,91 +15,91 @@ MonoBehaviour:
   _statusDatas:
   - _name: Asuka
     _lv: 50
-    _hp: 150
+    _hp: 4500
     _mp: 90
-    _atk: 10
-    _magicAtk: 11
-    _def: 6
-    _magicDef: 6
+    _atk: 1000
+    _magicAtk: 1100
+    _def: 300
+    _magicDef: 300
     _agi: 4
   - _name: Alice
     _lv: 50
-    _hp: 125
+    _hp: 3750
     _mp: 80
-    _atk: 16
-    _magicAtk: 10
-    _def: 5
-    _magicDef: 6
+    _atk: 1600
+    _magicAtk: 1000
+    _def: 250
+    _magicDef: 300
     _agi: 5
   - _name: Yui
     _lv: 50
-    _hp: 110
+    _hp: 3300
     _mp: 75
-    _atk: 8
-    _magicAtk: 14
-    _def: 6
-    _magicDef: 8
+    _atk: 1400
+    _magicAtk: 800
+    _def: 300
+    _magicDef: 400
     _agi: 5
   - _name: Kirika
     _lv: 55
-    _hp: 180
+    _hp: 5400
     _mp: 85
-    _atk: 14
-    _magicAtk: 15
-    _def: 6
-    _magicDef: 5
-    _agi: 7
+    _atk: 1400
+    _magicAtk: 1500
+    _def: 300
+    _magicDef: 2500
+    _agi: 6
   - _name: Kaito
     _lv: 55
-    _hp: 100
+    _hp: 3000
     _mp: 90
-    _atk: 20
-    _magicAtk: 15
-    _def: 6
-    _magicDef: 5
+    _atk: 2000
+    _magicAtk: 1500
+    _def: 200
+    _magicDef: 250
     _agi: 10
   - _name: Mana
     _lv: 55
-    _hp: 200
+    _hp: 6000
     _mp: 100
-    _atk: 14
-    _magicAtk: 15
-    _def: 6
-    _magicDef: 5
+    _atk: 1400
+    _magicAtk: 1500
+    _def: 300
+    _magicDef: 250
     _agi: 9
   - _name: Rion
     _lv: 55
-    _hp: 210
+    _hp: 6300
     _mp: 120
-    _atk: 23
-    _magicAtk: 15
-    _def: 6
-    _magicDef: 5
-    _agi: 12
+    _atk: 2300
+    _magicAtk: 1500
+    _def: 150
+    _magicDef: 250
+    _agi: 14
   - _name: Rika
     _lv: 55
-    _hp: 220
-    _mp: 100
-    _atk: 30
-    _magicAtk: 18
-    _def: 6
-    _magicDef: 5
-    _agi: 15
+    _hp: 6600
+    _mp: 200
+    _atk: 2500
+    _magicAtk: 1800
+    _def: 400
+    _magicDef: 250
+    _agi: 20
   - _name: Sara
     _lv: 55
-    _hp: 200
-    _mp: 110
-    _atk: 24
-    _magicAtk: 15
-    _def: 6
-    _magicDef: 5
-    _agi: 13
+    _hp: 6000
+    _mp: 180
+    _atk: 2400
+    _magicAtk: 1500
+    _def: 200
+    _magicDef: 350
+    _agi: 15
   - _name: Sizuku
     _lv: 55
-    _hp: 215
+    _hp: 6450
     _mp: 125
-    _atk: 22
-    _magicAtk: 14
-    _def: 6
-    _magicDef: 5
+    _atk: 2200
+    _magicAtk: 1400
+    _def: 300
+    _magicDef: 250
     _agi: 14

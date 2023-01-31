@@ -8,7 +8,8 @@ using UnityEngine.UI;
 
 public class BarrieEnemy : MonoBehaviour, IDamagable
 {
-	
+	public bool Death => _death;
+
 	[SerializeField]
 	bool _barrieIsEnable = true;
 
@@ -20,6 +21,10 @@ public class BarrieEnemy : MonoBehaviour, IDamagable
 	float _currentHp;
 
 	float _currentDamage;
+
+	[SerializeField]
+	bool _death = false;
+
 	async void Start()
 	{
 		await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
@@ -50,6 +55,7 @@ public class BarrieEnemy : MonoBehaviour, IDamagable
 		CreateDamage.I.EnemyDamageText(damage, 1);
 		if (_currentHp <= 0)
         {
+			_death = true;
 			Debug.Log("BarrieEnemy‚ð“|‚µ‚½");
         }
     }

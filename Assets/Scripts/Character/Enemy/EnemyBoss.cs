@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class EnemyBoss : MonoBehaviour,IDamagable
 {
+    public bool Death => _death;
+
     [SerializeField]
     int _RestorableCount = 1;
 
@@ -16,6 +18,9 @@ public class EnemyBoss : MonoBehaviour,IDamagable
 
     /// <summary>åªç›ÇÃHP</summary>
     float _currentHp;
+
+    [SerializeField]
+    bool _death = false;
 
     async void Start()
     {
@@ -40,6 +45,7 @@ public class EnemyBoss : MonoBehaviour,IDamagable
 
         if (_currentHp < 0 && _RestorableCount <= 0)
         {
+            _death = true;
             Debug.Log("BossÇì|ÇµÇΩ");
         }
     }

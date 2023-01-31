@@ -6,12 +6,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Character : MonoBehaviour,IDamagable
+public class Character : MonoBehaviour,IDamagable,IRecovery
 {
-	public static Character I = null;
 	public Image CharaImage => _charaImage;
 
     public bool Death => _death;
+
+    public int Id => _id;
 
     [SerializeField]
 	[Header("キャラクターのHpSlider")]
@@ -31,7 +32,6 @@ public class Character : MonoBehaviour,IDamagable
 
     async void Start()
 	{
-		I = this;
 		await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
 
 		_hpSlider.maxValue = CharacterSaveData.I.Hp[_id];
@@ -44,8 +44,13 @@ public class Character : MonoBehaviour,IDamagable
 	public void AddDamage(float damage)
     {
 		_currentHp -= damage;
-		_hpSlider.value = _currentHp;
-		Debug.Log("Hp: " + _hpSlider.value);
+
+		DOTween
+			.To(() => _hpSlider.value,
+			value => _hpSlider.value = value,
+			_currentHp, 1.5f);
+
+		Debug.Log("Hp: " + _currentHp);
 		var num = UnityEngine.Random.Range(0,5);
 		CreateDamage.I.CharacterDamageText(damage, num);
 
@@ -55,5 +60,25 @@ public class Character : MonoBehaviour,IDamagable
 			_death = true;
 			Debug.Log($"{CharacterDataController.I.SavePath[_id]}のHpがなくなりました");
 		}
+	}
+
+    public void AddRecovery(float recovery, int id)
+    {
+		_currentHp += recovery;
+
+		if (_currentHp >= _hpSlider.value)
+		{
+			_currentHp = _hpSlider.value;
+		}
+
+		DOTween
+			.To(() => _hpSlider.value,
+			value => _hpSlider.value = value,
+			_currentHp, 1.5f);
+
+		//_hpSlider.value = _currentHp;
+		Debug.Log("Hp: " + _currentHp);
+
+		CreateDamage.I.CharacterRecoveryText(recovery, id);
 	}
 }

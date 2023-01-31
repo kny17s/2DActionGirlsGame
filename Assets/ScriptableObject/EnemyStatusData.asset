@@ -14,38 +14,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _statusDatas:
   - _name: Bandit
-    _lv: 50
-    _hp: 300
+    _lv: 55
+    _hp: 8000
     _mp: 250
-    _atk: 20
-    _magicAtk: 20
-    _def: 6
-    _magicDef: 6
+    _atk: 1800
+    _magicAtk: 2000
+    _def: 360
+    _magicDef: 360
     _agi: 8
   - _name: Bandit_SwordsMan
-    _lv: 50
-    _hp: 300
+    _lv: 55
+    _hp: 9000
     _mp: 250
-    _atk: 20
-    _magicAtk: 20
-    _def: 6
-    _magicDef: 6
-    _agi: 8
+    _atk: 2000
+    _magicAtk: 2000
+    _def: 300
+    _magicDef: 250
+    _agi: 10
   - _name: Bandit_Boss
-    _lv: 50
-    _hp: 300
-    _mp: 250
-    _atk: 20
-    _magicAtk: 20
-    _def: 6
-    _magicDef: 6
-    _agi: 8
+    _lv: 55
+    _hp: 12000
+    _mp: 500
+    _atk: 2400
+    _magicAtk: 2200
+    _def: 240
+    _magicDef: 250
+    _agi: 15
   - _name: Bandit_Magician
     _lv: 50
-    _hp: 300
+    _hp: 6000
     _mp: 250
-    _atk: 20
-    _magicAtk: 20
-    _def: 6
-    _magicDef: 6
-    _agi: 8
+    _atk: 1900
+    _magicAtk: 1900
+    _def: 200
+    _magicDef: 200
+    _agi: 6

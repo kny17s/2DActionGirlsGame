@@ -37,4 +37,10 @@ public class CreateDamage : MonoBehaviour
         Instantiate(_damageText[1], _characterTarget[id].transform.position + _characterOffSet, transform.rotation).GetComponent<TextMesh>().text = damage.ToString();
     }
 
+    /// <summary>味方が受けたダメージをテキストで生成</summary>
+    /// <param name="damage">回復量</param>
+    public void CharacterRecoveryText(float recovery, int id)
+    {
+        Instantiate(_damageText[2], _characterTarget[id].transform.position + _characterOffSet, transform.rotation).GetComponent<TextMesh>().text = recovery.ToString();
+    }
 }

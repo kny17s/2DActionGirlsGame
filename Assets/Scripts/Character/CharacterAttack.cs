@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UniRx;
+using UniRx.Triggers;
 
 public class CharacterAttack : MonoBehaviour
 {
@@ -27,7 +29,7 @@ public class CharacterAttack : MonoBehaviour
 
 	const float _chargeSp = 3;
 
-	const float _addSp = 20;
+	const float _addSp = 40;
 
 	Character _character;
 
@@ -42,17 +44,12 @@ public class CharacterAttack : MonoBehaviour
 		_skillSlider.maxValue = CharacterSaveData.I.Sp[_id];
 		_skillSlider.value = _skillSlider.minValue;
 
+		this.UpdateAsObservable()
+			.Subscribe(_ => Attack(_character.Death))
+			.AddTo(this);
 	}
 
-	private void Update()
-	{
-		if (!_character.Death)
-		{
-			Attack();
-		}
-	}
-
-	public void UseSkill()
+	public void UseAttackSkill()
 	{
 		_currentSp = _skillSlider.minValue;
 		_skillSlider.value = _currentSp;
@@ -70,7 +67,8 @@ public class CharacterAttack : MonoBehaviour
 		else
 		{
 			var i = UnityEngine.Random.Range(0, 5);//_idを使う
-			//Animator anim = AttakTarget.I._CharacterImage[i].GetComponent<Animator>();
+
+			//Animator anim = AttakTarget.I._CharacterImage[j].GetComponent<Animator>();
 			//anim.SetTrigger("Attack");
 
 			var damagetarget = AttakTarget.I.Enemy[num].GetComponent<IDamagable>();
@@ -83,55 +81,77 @@ public class CharacterAttack : MonoBehaviour
 		}
 	}
 
-	public async void Attack()
+	public void UseRecoverySkill(float recovery)
     {
-		if (_currentTime >= _atkSlider.maxValue)
-		{
-			Debug.Log($"{CharacterDataController.I.SavePath[_id]}が攻撃！");
+		_currentSp = _skillSlider.minValue;
+		_skillSlider.value = _currentSp;
 
-			_currentTime = _atkSlider.minValue;
-			var num = UnityEngine.Random.Range(0, AttakTarget.I.Enemy.Count);
-			var damage = CharacterSaveData.I.Atk[_id] - EnemySaveData.I.EnemyDef[num];
+		_skill = false;
 
-			if (damage <= 0)
+
+		for (int i = 0; i < 5; i++)
+        {
+			var recoverytarget = AttakTarget.I.Character[i].GetComponent<IRecovery>();
+
+			if (recoverytarget != null)
 			{
-				Debug.Log($"{CharacterDataController.I.SavePath[_id]}の攻撃が効かなかった");
+				AttakTarget.I.Character[i].GetComponent<IRecovery>().AddRecovery(recovery, i);
+				_skillSlider.value += _addSp;
 			}
-
-			else
+		}
+    }
+	public async void Attack(bool death)
+    {
+		if (!death)
+		{
+			if (_currentTime >= _atkSlider.maxValue)
 			{
-				var i = UnityEngine.Random.Range(0, 5);
-				Animator anim = AttakTarget.I._CharacterImage[i].GetComponent<Animator>();
-				anim.SetTrigger("Attack");
-				await UniTask.Delay(TimeSpan.FromSeconds(1f));
+				Debug.Log($"{CharacterDataController.I.SavePath[_id]}が攻撃！");
 
-				var damagetarget = AttakTarget.I.Enemy[num].GetComponent<IDamagable>();
+				_currentTime = _atkSlider.minValue;
+				var num = UnityEngine.Random.Range(0, AttakTarget.I.Enemy.Count);
+				var damage = CharacterSaveData.I.Atk[_id] - EnemySaveData.I.EnemyDef[num];
 
-				if (damagetarget != null)
+				if (damage <= 0)
 				{
-					AttakTarget.I.Enemy[num].GetComponent<IDamagable>().AddDamage(damage);
-					_skillSlider.value += _addSp;
+					Debug.Log($"{CharacterDataController.I.SavePath[_id]}の攻撃が効かなかった");
+				}
+
+				else
+				{
+					var i = UnityEngine.Random.Range(0, 5);
+					Animator anim = AttakTarget.I._CharacterImage[i].GetComponent<Animator>();
+					anim.SetTrigger("Attack");
+					await UniTask.Delay(TimeSpan.FromSeconds(1f));
+
+					var damagetarget = AttakTarget.I.Enemy[num].GetComponent<IDamagable>();
+
+					if (damagetarget != null)
+					{
+						AttakTarget.I.Enemy[num].GetComponent<IDamagable>().AddDamage(damage);
+						_skillSlider.value += _addSp;
+					}
 				}
 			}
-		}
-		else
-		{
-			_currentTime += Time.deltaTime;
-		}
+			else
+			{
+				_currentTime += Time.deltaTime;
+			}
 
-		_atkSlider.value = _currentTime;
+			_atkSlider.value = _currentTime;
 
 
-		if (_skillSlider.value == _skillSlider.maxValue && _skill == false)
-		{
-			Debug.Log("スキルが使用可能です");
-			_skill = true;
-		}
-		else
-		{
-			_currentSp += (Time.deltaTime * _chargeSp);
-		}
+			if (_skillSlider.value == _skillSlider.maxValue && _skill == false)
+			{
+				Debug.Log("スキルが使用可能です");
+				_skill = true;
+			}
+			else
+			{
+				_currentSp += (Time.deltaTime * _chargeSp);
+			}
 
-		_skillSlider.value = _currentSp;
+			_skillSlider.value = _currentSp;
+		}	
 	}
 }

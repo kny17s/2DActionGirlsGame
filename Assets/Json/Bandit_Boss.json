@@ -1,9 +1,9 @@
 {
     "_enemyName": "Bandit_Boss",
-    "_enemyLv": 50,
-    "_enemyHp": 300.0,
-    "_enemyAtk": 20.0,
-    "_enemyDef": 6.0,
-    "_enemyAgi": 8.0,
-    "_enemyMp": 250
+    "_enemyLv": 55,
+    "_enemyHp": 20000.0,
+    "_enemyAtk": 2400.0,
+    "_enemyDef": 340.0,
+    "_enemyAgi": 13.0,
+    "_enemyMp": 500
 }
