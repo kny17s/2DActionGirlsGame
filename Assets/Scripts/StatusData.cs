@@ -30,12 +30,6 @@ public class StatusDatas
     /// <summary>防御力</summary>
     public float Def => _def;
 
-    /// <summary>体力</summary>
-    public float MagicAtk => _magicAtk;
-
-    /// <summary>体力</summary>
-    public float MagicDef => _magicDef;
-
     /// <summary>攻撃力</summary>
     public float Atk => _atk;
 
@@ -54,7 +48,8 @@ public class StatusDatas
     int _lv;
 
     [SerializeField]
-    [Header("キャラクターの体力")]    float _hp;
+    [Header("キャラクターの体力")]
+    float _hp;
 
     [SerializeField]
     [Header("キャラクターの魔力")]
@@ -65,16 +60,8 @@ public class StatusDatas
     float _atk;
 
     [SerializeField]
-    [Header("キャラクターの特殊攻撃力")]
-    float _magicAtk;
-
-    [SerializeField]
     [Header("キャラクターの防御力")]
     float _def;
-
-    [SerializeField]
-    [Header("キャラクターの特殊防御力")]
-    float _magicDef;
 
     [SerializeField]
     [Header("キャラクターの攻撃速度")]

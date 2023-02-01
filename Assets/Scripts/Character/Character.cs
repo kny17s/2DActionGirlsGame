@@ -66,19 +66,18 @@ public class Character : MonoBehaviour,IDamagable,IRecovery
     {
 		_currentHp += recovery;
 
-		if (_currentHp >= _hpSlider.value)
-		{
-			_currentHp = _hpSlider.value;
-		}
+		CreateDamage.I.CharacterRecoveryText(recovery, id);
 
 		DOTween
 			.To(() => _hpSlider.value,
 			value => _hpSlider.value = value,
 			_currentHp, 1.5f);
 
-		//_hpSlider.value = _currentHp;
-		Debug.Log("Hp: " + _currentHp);
+		if (_currentHp >= _hpSlider.maxValue)
+		{
+			_currentHp = _hpSlider.value;
+		}
 
-		CreateDamage.I.CharacterRecoveryText(recovery, id);
+		Debug.Log("Hp: " + _currentHp);
 	}
 }

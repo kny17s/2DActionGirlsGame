@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour
     GameObject _gachaPanel;
 
     [SerializeField]
+    Image _charaImage;
 
     public void Awake() => I = this;
 
@@ -64,7 +65,7 @@ public class UIManager : MonoBehaviour
         _sizeText.text = _charaProfile.Profile[id].Size;
         _birthdayText.text = _charaProfile.Profile[id].Birthday;
         _likeText.text = _charaProfile.Profile[id].Like;
-
+        _charaImage.sprite = UsableCharacter.I.GachaCharacter[id].GetComponent<Image>().sprite;
         _charaProfilePanel.SetActive(true);
     }
 

@@ -1,14 +1,14 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(EnemyDataController))]
+/*[CustomEditor(typeof(EnemyDataController))]
 public class EnemySavaDataEditer : Editor
 {
 
     /// <summary>
     /// Inspector‚ÌGUI‚ğXV
     /// </summary>
-    public override void OnInspectorGUI()
+    /*public override void OnInspectorGUI()
     {
         //Œ³‚ÌInspector•”•ª‚ğ•\¦
         base.OnInspectorGUI();
@@ -19,6 +19,4 @@ public class EnemySavaDataEditer : Editor
         {
             enemySaveController.EnemyRgister();
         }
-    }
-
-}
+    }*/

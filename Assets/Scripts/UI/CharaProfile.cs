@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(
   fileName = "CharaProfile",
@@ -32,6 +33,10 @@ public class Profile
     string _name;
 
     [SerializeField]
+    [Header("キャラクターイメージ")]
+    Image _charaImage;
+
+    [SerializeField]
     [Header("誕生日")]
     string _birthday;
 
@@ -42,4 +47,5 @@ public class Profile
     [SerializeField]
     [Header("好き")]
     string _like;
+
 }

@@ -96,7 +96,7 @@ public class CharacterAttack : MonoBehaviour
 			if (recoverytarget != null)
 			{
 				AttakTarget.I.Character[i].GetComponent<IRecovery>().AddRecovery(recovery, i);
-				_skillSlider.value += _addSp;
+				_skillSlider.value += (_addSp * 2);
 			}
 		}
     }
