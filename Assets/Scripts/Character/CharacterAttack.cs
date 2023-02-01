@@ -21,13 +21,14 @@ public class CharacterAttack : MonoBehaviour
 
 	float _currentSp;
 
+	[SerializeField]
 	bool _skill = false;
 
 	[SerializeField]
 	[Header("キャラクターID")]
 	int _id;
 
-	const float _chargeSp = 3;
+	const float _chargeSp = 4;
 
 	const float _addSp = 40;
 
@@ -76,7 +77,6 @@ public class CharacterAttack : MonoBehaviour
 			if (damagetarget != null)
 			{
 				AttakTarget.I.Enemy[num].GetComponent<IDamagable>().AddDamage(damage);
-				_skillSlider.value += (_addSp * 2);
 			}
 		}
 	}
@@ -88,7 +88,6 @@ public class CharacterAttack : MonoBehaviour
 
 		_skill = false;
 
-
 		for (int i = 0; i < 5; i++)
         {
 			var recoverytarget = AttakTarget.I.Character[i].GetComponent<IRecovery>();
@@ -96,10 +95,10 @@ public class CharacterAttack : MonoBehaviour
 			if (recoverytarget != null)
 			{
 				AttakTarget.I.Character[i].GetComponent<IRecovery>().AddRecovery(recovery, i);
-				_skillSlider.value += (_addSp * 2);
 			}
 		}
     }
+
 	public async void Attack(bool death)
     {
 		if (!death)
@@ -129,7 +128,6 @@ public class CharacterAttack : MonoBehaviour
 					if (damagetarget != null)
 					{
 						AttakTarget.I.Enemy[num].GetComponent<IDamagable>().AddDamage(damage);
-						_skillSlider.value += _addSp;
 					}
 				}
 			}
@@ -141,7 +139,7 @@ public class CharacterAttack : MonoBehaviour
 			_atkSlider.value = _currentTime;
 
 
-			if (_skillSlider.value == _skillSlider.maxValue && _skill == false)
+			if (_skillSlider.value == _skillSlider.maxValue)
 			{
 				Debug.Log("スキルが使用可能です");
 				_skill = true;

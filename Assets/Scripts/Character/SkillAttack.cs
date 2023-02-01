@@ -63,9 +63,13 @@ public class SkillAttack : MonoBehaviour, IPointerClickHandler
             }
 
         }
-        else
+        else if(_characterAttack.Skill == false)
         {
             Debug.Log("ÉQÅ[ÉWÇ™ÇΩÇ‹Ç¡ÇƒÇ¢Ç‹ÇπÇÒ");
+        }
+        else if(_character.Death)
+        {
+            Debug.Log("éÄÇÒÇ≈Ç¢Ç‹Ç∑");
         }
     }
 }

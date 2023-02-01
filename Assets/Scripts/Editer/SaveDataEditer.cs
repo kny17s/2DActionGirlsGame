@@ -8,7 +8,7 @@ public class SaveDataEditer : Editor
     /// <summary>
     /// Inspector‚ÌGUI‚ğXV
     /// </summary>
-    /*public override void OnInspectorGUI()
+    public override void OnInspectorGUI()
     {
         //Œ³‚ÌInspector•”•ª‚ğ•\¦
         base.OnInspectorGUI();
@@ -19,4 +19,6 @@ public class SaveDataEditer : Editor
         {
             saveController.Rgister();
         }
-    }*/
+    }
+}
+*/

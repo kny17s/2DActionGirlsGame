@@ -37,6 +37,31 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     Image _charaImage;
 
+    [SerializeField]
+    GameObject _statusPanel;
+
+    [SerializeField]
+    Button _statusButton;
+
+    [SerializeField]
+    Text _lvText;
+
+    [SerializeField]
+    Text _hpText;
+
+    [SerializeField]
+    Text _atkText;
+
+    [SerializeField]
+    Text _defText;
+
+    [SerializeField]
+    Text _agiText;
+
+    [SerializeField]
+    Text _spText;
+
+    int _id;
     public void Awake() => I = this;
 
     public void OpenPartySelectPanel()
@@ -66,6 +91,7 @@ public class UIManager : MonoBehaviour
         _birthdayText.text = _charaProfile.Profile[id].Birthday;
         _likeText.text = _charaProfile.Profile[id].Like;
         _charaImage.sprite = UsableCharacter.I.GachaCharacter[id].GetComponent<Image>().sprite;
+        _id = id;
         _charaProfilePanel.SetActive(true);
     }
 
@@ -82,5 +108,26 @@ public class UIManager : MonoBehaviour
     public void CloseGachaPanel()
     {
         _gachaPanel.SetActive(false);
+    }
+
+    public void OpenCharaStatusPanel()
+    {
+        _lvText.text = CharacterSaveData.I.Lv[_id].ToString("f0");
+        _hpText.text = CharacterSaveData.I.Hp[_id].ToString("f0");
+        _atkText.text = CharacterSaveData.I.Atk[_id].ToString("f0");
+        _defText.text = CharacterSaveData.I.Def[_id].ToString("f0");
+        _agiText.text = CharacterSaveData.I.Agi[_id].ToString("f0");
+        _spText.text = CharacterSaveData.I.Sp[_id].ToString("f0");
+
+        _statusPanel.SetActive(true);
+    }
+
+    public void TrainingButton()
+    {
+
+    }
+    public void ClossCharaStatusButton()
+    {
+        _statusPanel.SetActive(false);
     }
 }
