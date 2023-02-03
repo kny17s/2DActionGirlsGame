@@ -141,7 +141,7 @@ public class CharacterAttack : MonoBehaviour
 
 			if (_skillSlider.value == _skillSlider.maxValue)
 			{
-				Debug.Log("スキルが使用可能です");
+				//Debug.Log("スキルが使用可能です");
 				_skill = true;
 			}
 			else

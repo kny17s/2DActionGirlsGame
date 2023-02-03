@@ -61,6 +61,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     Text _spText;
 
+    [SerializeField]
+    Image _statusCharaIMage;
+
     int _id;
     public void Awake() => I = this;
 
@@ -118,7 +121,7 @@ public class UIManager : MonoBehaviour
         _defText.text = CharacterSaveData.I.Def[_id].ToString("f0");
         _agiText.text = CharacterSaveData.I.Agi[_id].ToString("f0");
         _spText.text = CharacterSaveData.I.Sp[_id].ToString("f0");
-
+        _statusCharaIMage.sprite = _charaImage.sprite;
         _statusPanel.SetActive(true);
     }
 

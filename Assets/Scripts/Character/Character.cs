@@ -75,7 +75,7 @@ public class Character : MonoBehaviour,IDamagable,IRecovery
 
 		if (_currentHp >= _hpSlider.maxValue)
 		{
-			_currentHp = _hpSlider.value;
+			_currentHp = _hpSlider.maxValue;
 		}
 
 		Debug.Log("Hp: " + _currentHp);

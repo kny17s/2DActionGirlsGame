@@ -7,7 +7,12 @@ public class SceneLoader : MonoBehaviour
 {
     public static SceneLoader I = null;
 
-    public void Awake() => I = this;
+    public void Awake()
+    {
+        I = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     public void LoadScene(string name)
     {
         SceneManager.LoadScene(name);
