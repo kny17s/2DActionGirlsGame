@@ -22,13 +22,13 @@ public class Character : MonoBehaviour,IDamagable,IRecovery
 	[Header("キャラクターID")]
 	int _id;
 
-	float _currentHp;
-
 	[SerializeField]
 	Image _charaImage;
 
 	[SerializeField]
 	bool _death = false;
+
+	float _currentHp;
 
     async void Start()
 	{

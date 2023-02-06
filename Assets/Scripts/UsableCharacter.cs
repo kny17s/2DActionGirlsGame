@@ -74,6 +74,7 @@ public class UsableCharacter : MonoBehaviour
         {
             Debug.Log("これ以上は追加できません");
         }
+
         if (_charaID.Count < _partyMax)
         {
             _charaID.Add(num);
@@ -101,6 +102,7 @@ public class UsableCharacter : MonoBehaviour
     public void GachaTen()
     {
         OpenGachaResultPanel();
+
         for(int i = 0; i < 10; i++)
         {
             var num = Random.Range(0, _gachaCharacter.Length);

@@ -11,15 +11,15 @@ public class CharacterAttack : MonoBehaviour
 {
 	public bool Skill => _skill;
 
+	const float _chargeSp = 4;
+
+	const float _addSp = 40;
+
 	[SerializeField]
 	Slider _atkSlider;
 
-	float _currentTime;
-
 	[SerializeField]
 	Slider _skillSlider;
-
-	float _currentSp;
 
 	[SerializeField]
 	bool _skill = false;
@@ -28,9 +28,9 @@ public class CharacterAttack : MonoBehaviour
 	[Header("キャラクターID")]
 	int _id;
 
-	const float _chargeSp = 4;
+	float _currentTime;
 
-	const float _addSp = 40;
+	float _currentSp;
 
 	Character _character;
 

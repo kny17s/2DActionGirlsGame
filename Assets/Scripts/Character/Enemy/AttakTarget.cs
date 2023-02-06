@@ -73,7 +73,7 @@ public class AttakTarget : MonoBehaviour
     public void GetChildren(GameObject obj)
     {
         Transform children = obj.GetComponentInChildren<Transform>();
-        //子要素がいなければ終了
+
         if (children.childCount == 0)
         {
             return;
@@ -89,7 +89,6 @@ public class AttakTarget : MonoBehaviour
     public void GetImageChildren(GameObject obj)
     {
         Transform children = obj.GetComponentInChildren<Transform>();
-        //子要素がいなければ終了
         if (children.childCount == 0)
         {
             return;
