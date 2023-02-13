@@ -13,7 +13,7 @@ public class RemoveChara : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        UsableCharacter.I.Reduction(_id);
+        UsableCharacter.Instance.Reduction(_id);
         Destroy(this.gameObject);
     }
 }

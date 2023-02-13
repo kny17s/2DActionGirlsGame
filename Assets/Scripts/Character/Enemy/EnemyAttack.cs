@@ -32,7 +32,7 @@ public class EnemyAttack : MonoBehaviour
 
 		await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
 
-		_atkSlider.maxValue = EnemySaveData.I.EnemyAgi[_id];
+		_atkSlider.maxValue = EnemySaveData.Instance.EnemyAgi[_id];
 		_atkSlider.value = _atkSlider.maxValue;
 		_currentTime = _atkSlider.maxValue;
 
@@ -83,23 +83,23 @@ public class EnemyAttack : MonoBehaviour
 		{
 			if (_currentTime <= _atkSlider.minValue)
 			{
-				Debug.Log($"{EnemyDataController.I.EnemySavePath[_id]}‚ªUŒ‚I");
+				Debug.Log($"{EnemyDataController.Instance.EnemySavePath[_id]}‚ªUŒ‚I");
 				_currentTime = _atkSlider.maxValue;
-				var damage = EnemySaveData.I.EnemyAtk[_id] - CharacterSaveData.I.Def[0];
+				var damage = EnemySaveData.Instance.EnemyAtk[_id] - CharacterSaveData.Instance.Def[0];
 
 				if (damage <= 0)
 				{
-					Debug.Log($"{EnemyDataController.I.EnemySavePath[_id]}‚ÌUŒ‚‚ªŒø‚©‚È‚©‚Á‚½");
+					Debug.Log($"{EnemyDataController.Instance.EnemySavePath[_id]}‚ÌUŒ‚‚ªŒø‚©‚È‚©‚Á‚½");
 				}
 
 				else
 				{
-					var num = UnityEngine.Random.Range(0, AttakTarget.I.Character.Count);
+					var num = UnityEngine.Random.Range(0, TargetManager.Instance.Character.Count);
 
-					var damagetarget = AttakTarget.I.Character[num].GetComponent<IDamagable>();
+					var damagetarget = TargetManager.Instance.Character[num].GetComponent<IDamagable>();
 					if (damagetarget != null)
 					{
-						AttakTarget.I.Character[num].GetComponent<IDamagable>().AddDamage(damage);
+						TargetManager.Instance.Character[num].GetComponent<IDamagable>().AddDamage(damage);
 					}
 				}
 			}

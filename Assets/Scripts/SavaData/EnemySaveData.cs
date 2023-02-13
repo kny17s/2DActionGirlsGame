@@ -13,10 +13,8 @@ public class EnemyData
     public int _enemyMp;
 }
 
-public class EnemySaveData : MonoBehaviour
+public class EnemySaveData : SingletonMonoBehaviour<EnemySaveData>
 {
-    public static EnemySaveData I = null;
-
     /// <summary>レベル</summary>
     public int[] EnemyLv => _enemyLv;
 
@@ -65,8 +63,6 @@ public class EnemySaveData : MonoBehaviour
     [SerializeField]
     [Header("キャラクターの攻撃速度")]
     float[] _enemyAgi;
-
-    void Awake() => I = this;
 
     public void SetValueEnemyData(EnemyData enemySaveData, int id)
     {

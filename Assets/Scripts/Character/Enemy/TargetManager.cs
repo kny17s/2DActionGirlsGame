@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AttakTarget : MonoBehaviour
+public class TargetManager : SingletonMonoBehaviour<TargetManager>
 {
-    public static AttakTarget I = null;
-
     public List<GameObject> Enemy => _enemy;
 
     public List<GameObject> Character => _character;
@@ -36,41 +34,22 @@ public class AttakTarget : MonoBehaviour
     [SerializeField]
     Transform[] _parentImage;
 
-    private void Awake()
+    private void Start()
     {
-        I = this;
-
-        for (int i = 0; i < UsableCharacter.I.CharaNum.Count; i++)
+        for (int i = 0; i < UsableCharacter.Instance.CharaNum.Count; i++)
         {
-            var j = UsableCharacter.I.CharaNum[i];
-            switch (j)
-            {
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                    Instantiate(_image[j], _parentImage[i]);
-                    Instantiate(_characterObjectData[j], _parentObject);
-                    break;
-                default:
-                    Debug.LogError("error　error　error　error　error　error");
-                    break;
-            }
+            var j = UsableCharacter.Instance.CharaNum[i];
+
+            Instantiate(_image[j], _parentImage[i]);
+            Instantiate(_characterObjectData[j], _parentObject);
 
             GetImageChildren(_parentImage[i].gameObject);
         }
 
-        GetChildren(_parentObject.gameObject);
+        GetObjectChildren(_parentObject.gameObject);
     }
 
-    public void GetChildren(GameObject obj)
+    public void GetObjectChildren(GameObject obj)
     {
         Transform children = obj.GetComponentInChildren<Transform>();
 
@@ -81,7 +60,6 @@ public class AttakTarget : MonoBehaviour
 
         foreach (Transform childobj in children)
         {
-            //子要素をaddする
             _character.Add(childobj.gameObject);
         }
     }
@@ -96,7 +74,7 @@ public class AttakTarget : MonoBehaviour
 
         foreach (Transform childobj in children)
         {
-            //子要素をaddする
+
             _characterImage.Add(childobj.gameObject);
         }
     }

@@ -9,13 +9,8 @@ public class OpenStatusPanel : MonoBehaviour, IPointerClickHandler
     [Header("キャラクターID")]
     int _id;
 
-    bool _chara = true;
-
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (_chara)
-        {
-            UIManager.I.OpenCharaProFilePanel(_id);
-        }
+        UIManager.Instance.OpenCharaStatusPanel(_id);
     }
 }

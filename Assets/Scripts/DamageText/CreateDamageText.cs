@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreateDamage : MonoBehaviour
+public class CreateDamageText : SingletonMonoBehaviour<CreateDamageText>
 {
-    public static CreateDamage I = null;
-
     [SerializeField]
     GameObject[] _damageText;
 
@@ -20,8 +18,6 @@ public class CreateDamage : MonoBehaviour
 
     [SerializeField]
     Vector3 _characterOffSet;
-
-    public void Awake() => I = this;
 
     /// <summary>敵が受けたダメージをテキストで生成</summary>
     /// <param name="damage">ダメージ量</param>
@@ -43,4 +39,5 @@ public class CreateDamage : MonoBehaviour
     {
         Instantiate(_damageText[2], _characterTarget[id].transform.position + _characterOffSet, transform.rotation).GetComponent<TextMesh>().text = recovery.ToString();
     }
+
 }

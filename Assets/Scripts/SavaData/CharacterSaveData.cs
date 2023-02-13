@@ -12,18 +12,16 @@ public class CharacterData
     public float _atk;
     public float _def;
     public float _agi;
-    public int _sp;
+    public int _mp;
 }
 
-public class CharacterSaveData : MonoBehaviour
+public class CharacterSaveData : SingletonMonoBehaviour<CharacterSaveData>
 {
-    public static CharacterSaveData I = null;
-
     /// <summary>レベル</summary>
     public int[] Lv => _lv;
 
     /// <summary>スキルポイント</summary>
-    public int[] Sp => _sp;
+    public int[] Mp => _mp;
 
     /// <summary>素早さ</summary>
     public float[] Agi => _agi;
@@ -54,7 +52,7 @@ public class CharacterSaveData : MonoBehaviour
 
     [SerializeField]
     [Header("キャラクターの魔力")]
-    int[] _sp;
+    int[] _mp;
 
     [SerializeField]
     [Header("キャラクターの攻撃力")]
@@ -68,7 +66,10 @@ public class CharacterSaveData : MonoBehaviour
     [Header("キャラクターの攻撃速度")]
     float[] _agi;
 
-    void Awake() => I = this;
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     public void SetValue(CharacterData saveData, int id)
     {
@@ -78,7 +79,7 @@ public class CharacterSaveData : MonoBehaviour
         _atk[id] = saveData._atk;
         _def[id] = saveData._def;
         _agi[id] = saveData._agi;
-        _sp[id] = saveData._sp;
+        _mp[id] = saveData._mp;
     }
 
     /// <summary>レベルが上がった場合に反映</summary>
@@ -122,11 +123,11 @@ public class CharacterSaveData : MonoBehaviour
     }
 
     /// <summary>スキルポイントが増えた場合に反映</summary>
-    /// <param name="Sp">上がったレベル</param>
+    /// <param name="mp">上がったレベル</param>
     /// <param name="id">キャラクターID</param>
-    public void PlusSp(int Sp, int id)
+    public void PlusSp(int mp, int id)
     {
-        _sp[id] += Sp;
+        _mp[id] += mp;
     }
 }
 

@@ -11,10 +11,6 @@ public class CharacterAttack : MonoBehaviour
 {
 	public bool Skill => _skill;
 
-	const float _chargeSp = 4;
-
-	const float _addSp = 40;
-
 	[SerializeField]
 	Slider _atkSlider;
 
@@ -23,10 +19,6 @@ public class CharacterAttack : MonoBehaviour
 
 	[SerializeField]
 	bool _skill = false;
-
-	[SerializeField]
-	[Header("キャラクターID")]
-	int _id;
 
 	float _currentTime;
 
@@ -39,10 +31,10 @@ public class CharacterAttack : MonoBehaviour
 		_character = this.gameObject.GetComponent<Character>();
 
 		await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
-		_atkSlider.maxValue = CharacterSaveData.I.Agi[_id];
+		_atkSlider.maxValue = CharacterSaveData.Instance.Agi[_character.Id];
 		_atkSlider.value = _atkSlider.minValue;
 
-		_skillSlider.maxValue = CharacterSaveData.I.Sp[_id];
+		_skillSlider.maxValue = CharacterSaveData.Instance.Mp[_character.Id];
 		_skillSlider.value = _skillSlider.minValue;
 
 		this.UpdateAsObservable()
@@ -50,38 +42,89 @@ public class CharacterAttack : MonoBehaviour
 			.AddTo(this);
 	}
 
-	public void UseAttackSkill()
+	public void UseSkill()
+    {
+		if (_skill == true && !_character.Death)
+		{
+			Debug.Log("スキルを使用しました。");
+
+			switch (_character.Id)
+			{
+				case 0:
+					UseAttackSkill();
+					break;
+				case 1:
+					UseRecoverySkill(CharacterSaveData.Instance.Atk[_character.Id]);
+					break;
+				case 2:
+					UseAttackSkill();
+					break;
+				case 3:
+					UseRecoverySkill(CharacterSaveData.Instance.Atk[_character.Id]);
+					break;
+				case 4:
+					UseAttackSkill();
+					break;
+				case 5:
+					UseRecoverySkill(CharacterSaveData.Instance.Atk[_character.Id]);
+					break;
+				case 6:
+					UseAttackSkill();
+					break;
+				case 7:
+					UseRecoverySkill(CharacterSaveData.Instance.Atk[_character.Id]);
+					break;
+				case 8:
+					UseAttackSkill();
+					break;
+				case 9:
+					UseRecoverySkill(CharacterSaveData.Instance.Atk[_character.Id]);
+					break;
+			}
+
+		}
+		else if (_skill == false)
+		{
+			Debug.Log("ゲージがたまっていません");
+		}
+		else if (_character.Death)
+		{
+			Debug.Log("死んでいます");
+		}
+	}
+
+	private void UseAttackSkill()
 	{
 		_currentSp = _skillSlider.minValue;
 		_skillSlider.value = _currentSp;
 
 		_skill = false;
 
-		var num = UnityEngine.Random.Range(0, AttakTarget.I.Enemy.Count);
-		var damage = (CharacterSaveData.I.Atk[_id] * 2) - EnemySaveData.I.EnemyDef[num];
+		var num = UnityEngine.Random.Range(0, TargetManager.Instance.Enemy.Count);
+		var damage = (CharacterSaveData.Instance.Atk[_character.Id] * 2) - EnemySaveData.Instance.EnemyDef[num];
 
 		if (damage <= 0)
 		{
-			Debug.Log($"{CharacterDataController.I.SavePath[_id]}の攻撃が効かなかった");
+			Debug.Log($"{CharacterDataController.Instance.SavePath[_character.Id]}の攻撃が効かなかった");
 		}
 
 		else
 		{
-			var i = UnityEngine.Random.Range(0, 5);//_idを使う
+			var i = UnityEngine.Random.Range(0, 5);
 
 			//Animator anim = AttakTarget.I._CharacterImage[j].GetComponent<Animator>();
 			//anim.SetTrigger("Attack");
 
-			var damagetarget = AttakTarget.I.Enemy[num].GetComponent<IDamagable>();
+			var damagetarget = TargetManager.Instance.Enemy[num].GetComponent<IDamagable>();
 
 			if (damagetarget != null)
 			{
-				AttakTarget.I.Enemy[num].GetComponent<IDamagable>().AddDamage(damage);
+				TargetManager.Instance.Enemy[num].GetComponent<IDamagable>().AddDamage(damage);
 			}
 		}
 	}
 
-	public void UseRecoverySkill(float recovery)
+	private void UseRecoverySkill(float recovery)
     {
 		_currentSp = _skillSlider.minValue;
 		_skillSlider.value = _currentSp;
@@ -90,44 +133,44 @@ public class CharacterAttack : MonoBehaviour
 
 		for (int i = 0; i < 5; i++)
         {
-			var recoverytarget = AttakTarget.I.Character[i].GetComponent<IRecovery>();
+			var recoverytarget = TargetManager.Instance.Character[i].GetComponent<IRecovery>();
 
 			if (recoverytarget != null)
 			{
-				AttakTarget.I.Character[i].GetComponent<IRecovery>().AddRecovery(recovery, i);
+				TargetManager.Instance.Character[i].GetComponent<IRecovery>().AddRecovery(recovery, i);
 			}
 		}
     }
 
-	public async void Attack(bool death)
+	private async void Attack(bool death)
     {
 		if (!death)
 		{
 			if (_currentTime >= _atkSlider.maxValue)
 			{
-				Debug.Log($"{CharacterDataController.I.SavePath[_id]}が攻撃！");
+				Debug.Log($"{CharacterDataController.Instance.SavePath[_character.Id]}が攻撃！");
 
 				_currentTime = _atkSlider.minValue;
-				var num = UnityEngine.Random.Range(0, AttakTarget.I.Enemy.Count);
-				var damage = CharacterSaveData.I.Atk[_id] - EnemySaveData.I.EnemyDef[num];
+				var num = UnityEngine.Random.Range(0, TargetManager.Instance.Enemy.Count);
+				var damage = CharacterSaveData.Instance.Atk[_character.Id] - EnemySaveData.Instance.EnemyDef[num];
 
 				if (damage <= 0)
 				{
-					Debug.Log($"{CharacterDataController.I.SavePath[_id]}の攻撃が効かなかった");
+					Debug.Log($"{CharacterDataController.Instance.SavePath[_character.Id]}の攻撃が効かなかった");
 				}
 
 				else
 				{
 					var i = UnityEngine.Random.Range(0, 5);
-					Animator anim = AttakTarget.I._CharacterImage[i].GetComponent<Animator>();
+					Animator anim = TargetManager.Instance._CharacterImage[i].GetComponent<Animator>();
 					anim.SetTrigger("Attack");
 					await UniTask.Delay(TimeSpan.FromSeconds(1f));
 
-					var damagetarget = AttakTarget.I.Enemy[num].GetComponent<IDamagable>();
+					var damagetarget = TargetManager.Instance.Enemy[num].GetComponent<IDamagable>();
 
 					if (damagetarget != null)
 					{
-						AttakTarget.I.Enemy[num].GetComponent<IDamagable>().AddDamage(damage);
+						TargetManager.Instance.Enemy[num].GetComponent<IDamagable>().AddDamage(damage);
 					}
 				}
 			}
@@ -141,12 +184,11 @@ public class CharacterAttack : MonoBehaviour
 
 			if (_skillSlider.value == _skillSlider.maxValue)
 			{
-				//Debug.Log("スキルが使用可能です");
 				_skill = true;
 			}
 			else
 			{
-				_currentSp += (Time.deltaTime * _chargeSp);
+				_currentSp += Time.deltaTime;
 			}
 
 			_skillSlider.value = _currentSp;

@@ -22,19 +22,19 @@ public class Character : MonoBehaviour,IDamagable,IRecovery
 	[Header("キャラクターID")]
 	int _id;
 
+	float _currentHp;
+
 	[SerializeField]
 	Image _charaImage;
 
 	[SerializeField]
 	bool _death = false;
 
-	float _currentHp;
-
     async void Start()
 	{
 		await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
 
-		_hpSlider.maxValue = CharacterSaveData.I.Hp[_id];
+		_hpSlider.maxValue = CharacterSaveData.Instance.Hp[_id];
 		_currentHp = _hpSlider.maxValue;
 		_hpSlider.value = _currentHp;
 	}
@@ -52,13 +52,13 @@ public class Character : MonoBehaviour,IDamagable,IRecovery
 
 		Debug.Log("Hp: " + _currentHp);
 		var num = UnityEngine.Random.Range(0,5);
-		CreateDamage.I.CharacterDamageText(damage, num);
+		CreateDamageText.Instance.CharacterDamageText(damage, num);
 
 		if (_hpSlider.value <= 0)
 		{
 			_charaImage.color = Color.gray;
 			_death = true;
-			Debug.Log($"{CharacterDataController.I.SavePath[_id]}のHpがなくなりました");
+			Debug.Log($"{CharacterDataController.Instance.SavePath[_id]}のHpがなくなりました");
 		}
 	}
 
@@ -66,7 +66,7 @@ public class Character : MonoBehaviour,IDamagable,IRecovery
     {
 		_currentHp += recovery;
 
-		CreateDamage.I.CharacterRecoveryText(recovery, id);
+		CreateDamageText.Instance.CharacterRecoveryText(recovery, id);
 
 		DOTween
 			.To(() => _hpSlider.value,
@@ -75,7 +75,7 @@ public class Character : MonoBehaviour,IDamagable,IRecovery
 
 		if (_currentHp >= _hpSlider.maxValue)
 		{
-			_currentHp = _hpSlider.maxValue;
+			_currentHp = _hpSlider.value;
 		}
 
 		Debug.Log("Hp: " + _currentHp);

@@ -398,7 +398,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 1480.0001, y: -875}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 190, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4255077069105957535
 CanvasRenderer:
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _atkSlider: {fileID: 1137495233578975022}
   _skillSlider: {fileID: 6241988395294766098}
-  _id: 4
+  _skill: 0
 --- !u!114 &891811569150062772
 MonoBehaviour:
   m_ObjectHideFlags: 0

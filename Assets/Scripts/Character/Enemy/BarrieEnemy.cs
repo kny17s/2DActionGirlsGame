@@ -25,11 +25,14 @@ public class BarrieEnemy : MonoBehaviour, IDamagable
 	[SerializeField]
 	bool _death = false;
 
+	CreateDamageText _createDamage;
+
 	async void Start()
 	{
+		_createDamage = GetComponent<CreateDamageText>();
 		await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
 
-		_hpSlider.maxValue = EnemySaveData.I.EnemyHp[0];
+		_hpSlider.maxValue = EnemySaveData.Instance.EnemyHp[0];
 		_currentHp = _hpSlider.maxValue;
 		_hpSlider.value = _currentHp;
 	}
@@ -52,7 +55,7 @@ public class BarrieEnemy : MonoBehaviour, IDamagable
 
 		_currentHp -= damage;
 		_hpSlider.value = _currentHp;
-		CreateDamage.I.EnemyDamageText(damage, 1);
+		CreateDamageText.Instance.EnemyDamageText(damage, 1);
 		if (_currentHp <= 0)
         {
 			_death = true;

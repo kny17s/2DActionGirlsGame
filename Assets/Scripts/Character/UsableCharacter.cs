@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UsableCharacter : MonoBehaviour
+public class UsableCharacter : SingletonMonoBehaviour<UsableCharacter>
 {
-    public static UsableCharacter I = null;
-
     public List<int> CharaNum => _charaID;
 
     public GameObject[] GachaCharacter  => _gachaCharacter;
@@ -19,6 +17,8 @@ public class UsableCharacter : MonoBehaviour
     Sprite[] _characterMaterial;
 
     const int _partyMax = 5;
+
+    const int USE_GACHACOIN = 1500;
 
     [SerializeField]
     Transform _parentObject;
@@ -57,17 +57,17 @@ public class UsableCharacter : MonoBehaviour
     Transform _gathaResultParent;
 
     [SerializeField]
+    Button _resultClossButton;
+
     int _gathaNum = 10;
 
     [SerializeField]
-    Button _resultClossButton;
+    GameCoinData _gameCoinData;
 
-    private void Awake()
+    private void Start()
     {
-        I = this;
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
-
     public void AddCharacter(int num)
     {
         if (_charaID.Count == _partyMax)
@@ -101,35 +101,60 @@ public class UsableCharacter : MonoBehaviour
 
     public void GachaTen()
     {
-        OpenGachaResultPanel();
-
-        for(int i = 0; i < 10; i++)
+        if(_gameCoinData.GachaCoin < USE_GACHACOIN)
         {
-            var num = Random.Range(0, _gachaCharacter.Length);
-            Debug.Log(num);
-            if (!_hasCharacter.Contains(_gachaCharacter[num]))
-            {
-                _hasCharacter.Add(_gachaCharacter[num]);
-                Instantiate(_gachaCharacter[num], _parent);
-                Instantiate(_selectChara[num], _charaSelectParent);
-                _gathaNum--;
-            }
-            else
-            {
-                Debug.Log($"ID：{num}のキャラが重複しました。");
-                _charaNum[num]++;
-            }
+            Debug.Log("足りないよ");
         }
+        else
+        {
+            OpenGachaResultPanel();
+            _gameCoinData.UseGachaCoin(1500);
 
-        GachaResult(_gathaNum);
+            for (int i = 0; i < 10; i++)
+            {
+                var num = Random.Range(0, _gachaCharacter.Length);
+                Debug.Log(num);
+
+                if (!_hasCharacter.Contains(_gachaCharacter[num]))
+                {
+                    _hasCharacter.Add(_gachaCharacter[num]);
+                    Instantiate(_gachaCharacter[num], _parent);
+                    Instantiate(_selectChara[num], _charaSelectParent);
+                    _gathaNum--;
+                }
+                else
+                {
+                    Debug.Log($"ID：{num}のキャラが重複しました。");
+                    _charaNum[num]++;
+                }
+            }
+
+            GachaResult(_gathaNum);
+        }
     }
 
     public void Gacha()
     {
+        OpenGachaResultPanel();
+
         var num = Random.Range(0, _gachaCharacter.Length);
         Debug.Log(num);
-        _hasCharacter.Add(_gachaCharacter[num]);
-        Instantiate(_gachaCharacter[num], _parent);
+
+        if (!_hasCharacter.Contains(_gachaCharacter[num]))
+        {
+            _hasCharacter.Add(_gachaCharacter[num]);
+            Instantiate(_gachaCharacter[num], _parent);
+            Instantiate(_selectChara[num], _charaSelectParent);
+            _gathaNum--;
+        }
+        else
+        {
+            Debug.Log($"ID：{num}のキャラが重複しました。");
+            _charaNum[num]++;
+        }
+
+        Debug.Log(_gathaNum);
+        GachaResult(_gathaNum);
     }
 
 

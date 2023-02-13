@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3809581632373807026}
   - component: {fileID: 40184574099272916}
   - component: {fileID: 497949769924875781}
-  - component: {fileID: 5039836411220024231}
+  - component: {fileID: 1216662394318125548}
   m_Layer: 5
   m_Name: Image (8)
   m_TagString: Untagged
@@ -134,7 +134,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5039836411220024231
+--- !u!114 &1216662394318125548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5039836411220024230}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e8168b02cfa4524fb59150b73ff6287, type: 3}
+  m_Script: {fileID: 11500000, guid: e76846a86e8125041a578641f017129c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 8

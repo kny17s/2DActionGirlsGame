@@ -10,96 +10,76 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57276832cf2d3c44c8285c122d0221e8, type: 3}
-  m_Name: CharacterStatusData
+  m_Name: MaxCharaStatusData
   m_EditorClassIdentifier: 
   _statusDatas:
   - _name: Asuka
     _lv: 50
     _hp: 4500
-    _mp: 90
+    _sp: 75
     _atk: 1000
-    _magicAtk: 1100
     _def: 300
-    _magicDef: 300
     _agi: 4
   - _name: Alice
     _lv: 50
     _hp: 3750
-    _mp: 80
+    _sp: 70
     _atk: 1600
-    _magicAtk: 1000
     _def: 250
-    _magicDef: 300
     _agi: 5
   - _name: Yui
     _lv: 50
     _hp: 3300
-    _mp: 75
+    _sp: 85
     _atk: 1400
-    _magicAtk: 800
     _def: 300
-    _magicDef: 400
     _agi: 5
   - _name: Kirika
     _lv: 55
     _hp: 5400
-    _mp: 85
+    _sp: 95
     _atk: 1400
-    _magicAtk: 1500
     _def: 300
-    _magicDef: 2500
     _agi: 6
   - _name: Kaito
     _lv: 55
     _hp: 3000
-    _mp: 90
+    _sp: 90
     _atk: 2000
-    _magicAtk: 1500
     _def: 200
-    _magicDef: 250
     _agi: 10
   - _name: Mana
     _lv: 55
     _hp: 6000
-    _mp: 100
+    _sp: 85
     _atk: 1400
-    _magicAtk: 1500
     _def: 300
-    _magicDef: 250
     _agi: 9
   - _name: Rion
     _lv: 55
     _hp: 6300
-    _mp: 120
+    _sp: 0
     _atk: 2300
-    _magicAtk: 1500
     _def: 150
-    _magicDef: 250
     _agi: 14
   - _name: Rika
     _lv: 55
     _hp: 6600
-    _mp: 200
+    _sp: 80
     _atk: 2500
-    _magicAtk: 1800
     _def: 400
-    _magicDef: 250
     _agi: 20
   - _name: Sara
     _lv: 55
     _hp: 6000
-    _mp: 180
+    _sp: 60
     _atk: 2400
-    _magicAtk: 1500
     _def: 200
-    _magicDef: 350
     _agi: 15
   - _name: Sizuku
     _lv: 55
     _hp: 6450
-    _mp: 125
+    _sp: 200
     _atk: 2200
-    _magicAtk: 1400
     _def: 300
-    _magicDef: 250
     _agi: 14

@@ -26,7 +26,7 @@ public class EnemyBoss : MonoBehaviour,IDamagable
     {
         await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
 
-        _hpSlider.maxValue = EnemySaveData.I.EnemyHp[0];
+        _hpSlider.maxValue = EnemySaveData.Instance.EnemyHp[0];
         _currentHp = _hpSlider.maxValue;
         _hpSlider.value = _currentHp;
     }
@@ -35,7 +35,7 @@ public class EnemyBoss : MonoBehaviour,IDamagable
     {
         _currentHp -= damage;
         _hpSlider.value = _currentHp;
-        CreateDamage.I.EnemyDamageText(damage, 2);
+        CreateDamageText.Instance.EnemyDamageText(damage, 2);
 
         if (_currentHp < 0 && _RestorableCount > 0)
         {

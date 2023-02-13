@@ -1,10 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDataController : MonoBehaviour
+public class EnemyDataController : SingletonMonoBehaviour<EnemyDataController>
 {
-    public static EnemyDataController I = null;
-
     /// <summary>キャラクターステータスデータのパス名</summary>
     public List<string> EnemySavePath => _enemySavePath;
 
@@ -18,7 +16,6 @@ public class EnemyDataController : MonoBehaviour
 
     public void Start()
     {
-        I = this;
         LoadingEnemyData();
     }
 
@@ -54,7 +51,7 @@ public class EnemyDataController : MonoBehaviour
                 };
             }
 
-            EnemySaveData.I.SetValueEnemyData(enemyData, i);
+            EnemySaveData.Instance.SetValueEnemyData(enemyData, i);
         }
     }
 
@@ -70,13 +67,13 @@ public class EnemyDataController : MonoBehaviour
         {
             EnemyData enemyData = new EnemyData()
             {
-                _enemyName = EnemySaveData.I.EnemyName[i],
-                _enemyLv = EnemySaveData.I.EnemyLv[i],
-                _enemyHp = EnemySaveData.I.EnemyHp[i],
-                _enemyMp = EnemySaveData.I.EnemyMp[i],
-                _enemyAtk = EnemySaveData.I.EnemyAtk[i],
-                _enemyDef = EnemySaveData.I.EnemyDef[i],
-                _enemyAgi = EnemySaveData.I.EnemyAgi[i],
+                _enemyName = EnemySaveData.Instance.EnemyName[i],
+                _enemyLv = EnemySaveData.Instance.EnemyLv[i],
+                _enemyHp = EnemySaveData.Instance.EnemyHp[i],
+                _enemyMp = EnemySaveData.Instance.EnemyMp[i],
+                _enemyAtk = EnemySaveData.Instance.EnemyAtk[i],
+                _enemyDef = EnemySaveData.Instance.EnemyDef[i],
+                _enemyAgi = EnemySaveData.Instance.EnemyAgi[i],
             };
 
             JsonSaveManager<EnemyData>.Save(enemyData, _enemySavePath[i]);

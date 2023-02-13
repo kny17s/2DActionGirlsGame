@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-/*[CustomEditor(typeof(CharacterDataController))]
+[CustomEditor(typeof(CharacterDataController))]
 public class SaveDataEditer : Editor
 {
 
@@ -21,4 +21,3 @@ public class SaveDataEditer : Editor
         }
     }
 }
-*/

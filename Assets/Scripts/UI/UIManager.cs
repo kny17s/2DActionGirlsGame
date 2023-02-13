@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UniRx;
+using UniRx.Triggers;
 
-public class UIManager : MonoBehaviour
+public class UIManager : SingletonMonoBehaviour<UIManager>
 {
-    public static UIManager I = null;
 
     [SerializeField]
     GameObject _charaSelectPanel;
@@ -38,10 +39,7 @@ public class UIManager : MonoBehaviour
     Image _charaImage;
 
     [SerializeField]
-    GameObject _statusPanel;
-
-    [SerializeField]
-    Button _statusButton;
+    GameObject _maxStatusPanel;
 
     [SerializeField]
     Text _lvText;
@@ -62,10 +60,58 @@ public class UIManager : MonoBehaviour
     Text _spText;
 
     [SerializeField]
-    Image _statusCharaIMage;
+    Image _maxStatusCharaImage;
 
-    int _id;
-    public void Awake() => I = this;
+    [SerializeField]
+    StatusData _maxStatusData;
+
+    [SerializeField]
+    GameObject _trainingPanel;
+
+    [SerializeField]
+    GameObject _currentStatusPanel;
+
+    [SerializeField]
+    Text _currentLvText;
+
+    [SerializeField]
+    Text _currentHpText;
+
+    [SerializeField]
+    Text _currentAtkText;
+
+    [SerializeField]
+    Text _currentDefText;
+
+    [SerializeField]
+    Text _currentAgiText;
+
+    [SerializeField]
+    Text _currentSpText;
+
+    [SerializeField]
+    Image _currentStatusCharaImage;
+
+    [SerializeField]
+    GameCoinData _gameCoinData;
+
+    [SerializeField]
+    Text _coinText;
+
+    [SerializeField]
+    Text _gachaCoinText;
+
+    private void Start()
+    {
+        this.UpdateAsObservable()
+            .Subscribe(_ => GameCoin())
+            .AddTo(this);
+    }
+    public void GameCoin()
+    {
+        _coinText.text = _gameCoinData.Coin.ToString();
+        _gachaCoinText.text = _gameCoinData.GachaCoin.ToString();
+    }
 
     public void OpenPartySelectPanel()
     {
@@ -93,8 +139,8 @@ public class UIManager : MonoBehaviour
         _sizeText.text = _charaProfile.Profile[id].Size;
         _birthdayText.text = _charaProfile.Profile[id].Birthday;
         _likeText.text = _charaProfile.Profile[id].Like;
-        _charaImage.sprite = UsableCharacter.I.GachaCharacter[id].GetComponent<Image>().sprite;
-        _id = id;
+        _charaImage.sprite = UsableCharacter.Instance.GachaCharacter[id].GetComponent<Image>().sprite;
+
         _charaProfilePanel.SetActive(true);
     }
 
@@ -113,24 +159,51 @@ public class UIManager : MonoBehaviour
         _gachaPanel.SetActive(false);
     }
 
-    public void OpenCharaStatusPanel()
+    public void OpenCharaGachaStatusPanel(int id)
     {
-        _lvText.text = CharacterSaveData.I.Lv[_id].ToString("f0");
-        _hpText.text = CharacterSaveData.I.Hp[_id].ToString("f0");
-        _atkText.text = CharacterSaveData.I.Atk[_id].ToString("f0");
-        _defText.text = CharacterSaveData.I.Def[_id].ToString("f0");
-        _agiText.text = CharacterSaveData.I.Agi[_id].ToString("f0");
-        _spText.text = CharacterSaveData.I.Sp[_id].ToString("f0");
-        _statusCharaIMage.sprite = _charaImage.sprite;
-        _statusPanel.SetActive(true);
+        _lvText.text = _maxStatusData.StatusDatas[id].Lv.ToString("f0");
+        _hpText.text = _maxStatusData.StatusDatas[id].Hp.ToString("f0");
+        _atkText.text = _maxStatusData.StatusDatas[id].Atk.ToString("f0");
+        _defText.text = _maxStatusData.StatusDatas[id].Def.ToString("f0");
+        _agiText.text = _maxStatusData.StatusDatas[id].Agi.ToString("f0");
+        _spText.text = _maxStatusData.StatusDatas[id].Mp.ToString("f0");
+
+        _maxStatusCharaImage.sprite = UsableCharacter.Instance.GachaCharacter[id].GetComponent<Image>().sprite;
+        _maxStatusPanel.SetActive(true);
     }
 
-    public void TrainingButton()
+    public void OpenTrainingPanel()
     {
+        _trainingPanel.SetActive(true);
+    }
 
-    }
-    public void ClossCharaStatusButton()
+    public void CloseTrainingPanel()
     {
-        _statusPanel.SetActive(false);
+        _trainingPanel.SetActive(false);
     }
+
+
+    public void CloseCharaMaxStatusButton()
+    {
+        _maxStatusPanel.SetActive(false);
+    }
+
+    public void OpenCharaStatusPanel(int id)
+    {
+        _currentLvText.text = CharacterSaveData.Instance.Lv[id].ToString("f0");
+        _currentHpText.text = CharacterSaveData.Instance.Hp[id].ToString("f0");
+        _currentAtkText.text = CharacterSaveData.Instance.Atk[id].ToString("f0");
+        _currentDefText.text = CharacterSaveData.Instance.Def[id].ToString("f0");
+        _currentAgiText.text = CharacterSaveData.Instance.Agi[id].ToString("f0");
+        _currentSpText.text = CharacterSaveData.Instance.Mp[id].ToString("f0");
+
+        _currentStatusCharaImage.sprite = UsableCharacter.Instance.GachaCharacter[id].GetComponent<Image>().sprite;
+        _currentStatusPanel.SetActive(true);
+    }
+
+    public void CloseCharaStatusPanel()
+    {
+        _currentStatusPanel.SetActive(false);
+    }
+
 }

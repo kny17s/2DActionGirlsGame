@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterDataController : MonoBehaviour
+public class CharacterDataController : SingletonMonoBehaviour<CharacterDataController>
 {
-    public static CharacterDataController I = null;
-
     /// <summary>キャラクターステータスデータのパス名</summary>
     public List<string> SavePath => _savePath;
 
@@ -19,7 +17,6 @@ public class CharacterDataController : MonoBehaviour
 
     public void Start()
     {
-        I = this;
         LoadingCharacterData();
     }
 
@@ -48,14 +45,14 @@ public class CharacterDataController : MonoBehaviour
                     _name = _statusData.StatusDatas[i].Name,
                     _lv = _statusData.StatusDatas[i].Lv,
                     _hp = _statusData.StatusDatas[i].Hp,
-                    _sp = _statusData.StatusDatas[i].Mp,
+                    _mp = _statusData.StatusDatas[i].Mp,
                     _atk = _statusData.StatusDatas[i].Atk,
                     _def = _statusData.StatusDatas[i].Def,
                     _agi = _statusData.StatusDatas[i].Agi,
                 };
             }
 
-            CharacterSaveData.I.SetValue(saveData, i);
+            CharacterSaveData.Instance.SetValue(saveData, i);
 
         }
     }
@@ -72,13 +69,13 @@ public class CharacterDataController : MonoBehaviour
         {
             CharacterData saveData = new CharacterData()
             {
-                _name = CharacterSaveData.I.Name[i],
-                _lv = CharacterSaveData.I.Lv[i],
-                _hp = CharacterSaveData.I.Hp[i],
-                _sp = CharacterSaveData.I.Sp[i],
-                _atk = CharacterSaveData.I.Atk[i],
-                _def = CharacterSaveData.I.Def[i],
-                _agi = CharacterSaveData.I.Agi[i],
+                _name = CharacterSaveData.Instance.Name[i],
+                _lv = CharacterSaveData.Instance.Lv[i],
+                _hp = CharacterSaveData.Instance.Hp[i],
+                _mp = CharacterSaveData.Instance.Mp[i],
+                _atk = CharacterSaveData.Instance.Atk[i],
+                _def = CharacterSaveData.Instance.Def[i],
+                _agi = CharacterSaveData.Instance.Agi[i],
             };
 
             JsonSaveManager<CharacterData>.Save(saveData, _savePath[i]);
