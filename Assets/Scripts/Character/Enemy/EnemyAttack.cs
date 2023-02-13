@@ -29,13 +29,11 @@ public class EnemyAttack : MonoBehaviour
 
 	private async void Start()
     {
-
 		await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
 
 		_atkSlider.maxValue = EnemySaveData.Instance.EnemyAgi[_id];
 		_atkSlider.value = _atkSlider.maxValue;
 		_currentTime = _atkSlider.maxValue;
-
 
 		switch (_id)
         {
@@ -69,8 +67,6 @@ public class EnemyAttack : MonoBehaviour
 		}
 
 		_atkPhase = true;
-
-
 	}
 
 	public async void Attack(bool death)
@@ -91,15 +87,14 @@ public class EnemyAttack : MonoBehaviour
 				{
 					Debug.Log($"{EnemyDataController.Instance.EnemySavePath[_id]}‚ÌUŒ‚‚ªŒø‚©‚È‚©‚Á‚½");
 				}
-
 				else
 				{
-					var num = UnityEngine.Random.Range(0, TargetManager.Instance.Character.Count);
+					var num = UnityEngine.Random.Range(0, TargetManager.Instance.CharacterDatas.Count);
 
-					var damagetarget = TargetManager.Instance.Character[num].GetComponent<IDamagable>();
+					var damagetarget = TargetManager.Instance.CharacterDatas[num].GetComponent<IDamagable>();
 					if (damagetarget != null)
 					{
-						TargetManager.Instance.Character[num].GetComponent<IDamagable>().AddDamage(damage);
+						TargetManager.Instance.CharacterDatas[num].GetComponent<IDamagable>().AddDamage(damage);
 					}
 				}
 			}

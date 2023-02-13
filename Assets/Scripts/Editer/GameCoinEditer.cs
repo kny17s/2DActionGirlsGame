@@ -15,7 +15,7 @@ public class GameCoinEditer : Editor
 
         if (GUILayout.Button("2000コインチャージ"))
         {
-            gameCoinData.AddCoin(1500);
+            gameCoinData.AddCoin(2000);
         }
 
         if (GUILayout.Button("1500ガチャコインチャージ"))

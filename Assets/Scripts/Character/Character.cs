@@ -59,6 +59,7 @@ public class Character : MonoBehaviour,IDamagable,IRecovery
 			_charaImage.color = Color.gray;
 			_death = true;
 			Debug.Log($"{CharacterDataController.Instance.SavePath[_id]}‚ÌHp‚ª‚È‚­‚È‚è‚Ü‚µ‚½");
+			TargetManager.Instance.CharacterDeathCheck();
 		}
 	}
 

@@ -60,6 +60,9 @@ public class BarrieEnemy : MonoBehaviour, IDamagable
         {
 			_death = true;
 			Debug.Log("BarrieEnemyを倒した");
-        }
+			//できたらアニメーション入れたい
+			gameObject.SetActive(false);
+			TargetManager.Instance.EnemyDeathCheck();
+		}
     }
 }

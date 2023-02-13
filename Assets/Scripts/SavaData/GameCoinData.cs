@@ -25,11 +25,13 @@ public class GameCoinData : MonoBehaviour
         _coinKey = "COIN";
         _gachaCoinKey = "GACHA_COIN";
 
+        //初期コイン登録
         _coin = PlayerPrefs.GetInt(_coinKey, 10000);
         _gachaCoin = PlayerPrefs.GetInt(_gachaCoinKey, 1500);
 
         PlayerPrefs.Save();
 
+        DontDestroyOnLoad(gameObject);
     }
 
     /// <summary>コインを手に入れた時</summary>

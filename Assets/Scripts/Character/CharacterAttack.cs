@@ -100,7 +100,7 @@ public class CharacterAttack : MonoBehaviour
 
 		_skill = false;
 
-		var num = UnityEngine.Random.Range(0, TargetManager.Instance.Enemy.Count);
+		var num = UnityEngine.Random.Range(0, TargetManager.Instance.EnemyObjects.Count);
 		var damage = (CharacterSaveData.Instance.Atk[_character.Id] * 2) - EnemySaveData.Instance.EnemyDef[num];
 
 		if (damage <= 0)
@@ -115,11 +115,11 @@ public class CharacterAttack : MonoBehaviour
 			//Animator anim = AttakTarget.I._CharacterImage[j].GetComponent<Animator>();
 			//anim.SetTrigger("Attack");
 
-			var damagetarget = TargetManager.Instance.Enemy[num].GetComponent<IDamagable>();
+			var damagetarget = TargetManager.Instance.EnemyObjects[num].GetComponent<IDamagable>();
 
 			if (damagetarget != null)
 			{
-				TargetManager.Instance.Enemy[num].GetComponent<IDamagable>().AddDamage(damage);
+				TargetManager.Instance.EnemyObjects[num].GetComponent<IDamagable>().AddDamage(damage);
 			}
 		}
 	}
@@ -133,11 +133,11 @@ public class CharacterAttack : MonoBehaviour
 
 		for (int i = 0; i < 5; i++)
         {
-			var recoverytarget = TargetManager.Instance.Character[i].GetComponent<IRecovery>();
+			var recoverytarget = TargetManager.Instance.CharacterDatas[i].GetComponent<IRecovery>();
 
 			if (recoverytarget != null)
 			{
-				TargetManager.Instance.Character[i].GetComponent<IRecovery>().AddRecovery(recovery, i);
+				TargetManager.Instance.CharacterDatas[i].GetComponent<IRecovery>().AddRecovery(recovery, i);
 			}
 		}
     }
@@ -151,7 +151,7 @@ public class CharacterAttack : MonoBehaviour
 				Debug.Log($"{CharacterDataController.Instance.SavePath[_character.Id]}Ç™çUåÇÅI");
 
 				_currentTime = _atkSlider.minValue;
-				var num = UnityEngine.Random.Range(0, TargetManager.Instance.Enemy.Count);
+				var num = UnityEngine.Random.Range(0, TargetManager.Instance.EnemyObjects.Count);
 				var damage = CharacterSaveData.Instance.Atk[_character.Id] - EnemySaveData.Instance.EnemyDef[num];
 
 				if (damage <= 0)
@@ -166,11 +166,11 @@ public class CharacterAttack : MonoBehaviour
 					anim.SetTrigger("Attack");
 					await UniTask.Delay(TimeSpan.FromSeconds(1f));
 
-					var damagetarget = TargetManager.Instance.Enemy[num].GetComponent<IDamagable>();
+					var damagetarget = TargetManager.Instance.EnemyObjects[num].GetComponent<IDamagable>();
 
 					if (damagetarget != null)
 					{
-						TargetManager.Instance.Enemy[num].GetComponent<IDamagable>().AddDamage(damage);
+						TargetManager.Instance.EnemyObjects[num].GetComponent<IDamagable>().AddDamage(damage);
 					}
 				}
 			}
