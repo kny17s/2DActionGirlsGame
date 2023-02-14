@@ -39,10 +39,15 @@ public class TargetManager : SingletonMonoBehaviour<TargetManager>
     [SerializeField]
     Transform[] _parentImage;
 
-    Character[] _character;
+    Character _character;
 
+    [SerializeField]
     Enemy _enemy;
+
+    [SerializeField]
     BarrieEnemy _barrieEnemy;
+
+    [SerializeField]
     EnemyBoss _enemyBoss;
 
     [SerializeField]
@@ -68,17 +73,6 @@ public class TargetManager : SingletonMonoBehaviour<TargetManager>
 
         GetObjectChildren(_parentObject.gameObject);
 
-        _enemy = _enemyObjects[0].GetComponent<Enemy>();
-        _barrieEnemy = _enemyObjects[1].GetComponent<BarrieEnemy>();
-        _enemyBoss = _enemyObjects[2].GetComponent<EnemyBoss>();
-    }
-
-    public void BattleChara()
-    {
-        for (int i = 0; i < _characterDatas.Count; i++)
-        {
-            _character[i] = _characterDatas[i].GetComponent<Character>();
-        }
     }
 
     public void GetObjectChildren(GameObject obj)
@@ -113,9 +107,12 @@ public class TargetManager : SingletonMonoBehaviour<TargetManager>
     }
     public async void CharacterDeathCheck()
     {
-        for (int i = 0; i < _characterDatas.Count; i++)
+        for(int i = 0; i < _characterDatas.Count; i++)
         {
-            if (_character[i].Death == true)
+            _character = _characterDatas[i].GetComponent<Character>();
+            Debug.Log(_character);
+
+            if (_character.Death == true)
             {
                 _characterDatas.Remove(_characterDatas[i]);
             }
@@ -123,7 +120,7 @@ public class TargetManager : SingletonMonoBehaviour<TargetManager>
 
         if (_characterDatas.Count == 0)
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(5.0f));
+            await UniTask.Delay(TimeSpan.FromSeconds(3.0f));
             SceneLoader.Instance.ChangeScene("GameOverScene");
         }
     }
@@ -147,7 +144,7 @@ public class TargetManager : SingletonMonoBehaviour<TargetManager>
 
         if (_enemyObjects.Count == 0)
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(5.0f));
+            await UniTask.Delay(TimeSpan.FromSeconds(3.0f));
             SceneLoader.Instance.ChangeScene("GameClearScene");
         }
     }

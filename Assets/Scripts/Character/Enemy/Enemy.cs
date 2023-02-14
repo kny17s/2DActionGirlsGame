@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour,IDamagable
 
     async void Start()
 	{
+
 		await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
 
 		_hpSlider.maxValue = EnemySaveData.Instance.EnemyHp[0];
@@ -30,6 +31,7 @@ public class Enemy : MonoBehaviour,IDamagable
 
 	public void AddDamage(float damage)
 	{
+
 		_currentHp -= damage;
 		_hpSlider.value = _currentHp;
 		CreateDamageText.Instance.EnemyDamageText(damage, 0);
@@ -38,7 +40,6 @@ public class Enemy : MonoBehaviour,IDamagable
 		{
 			_death = true;
 			Debug.Log("Enemyを倒した");
-			//できたらアニメーション入れたい
 			gameObject.SetActive(false);
 			TargetManager.Instance.EnemyDeathCheck();
 		}

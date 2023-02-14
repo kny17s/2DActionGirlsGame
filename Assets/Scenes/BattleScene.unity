@@ -5349,6 +5349,9 @@ MonoBehaviour:
   - {fileID: 414072780}
   - {fileID: 1204871566}
   - {fileID: 2057000864}
+  _enemy: {fileID: 1848822091}
+  _barrieEnemy: {fileID: 1562329185}
+  _enemyBoss: {fileID: 1994213352}
   _enemyObject: {fileID: 1848822087}
   _barrieEnemyObject: {fileID: 1562329183}
   _enemyBossObject: {fileID: 1994213347}
