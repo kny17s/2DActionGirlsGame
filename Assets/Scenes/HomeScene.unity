@@ -2052,6 +2052,7 @@ GameObject:
   - component: {fileID: 458683069}
   - component: {fileID: 458683068}
   - component: {fileID: 458683067}
+  - component: {fileID: 458683070}
   m_Layer: 5
   m_Name: CloseButton (1)
   m_TagString: Untagged
@@ -2174,6 +2175,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 458683065}
   m_CullTransparentMesh: 1
+--- !u!114 &458683070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458683065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1289537630}
+          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+          m_MethodName: CloseCharaProFilePanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &460487192
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,6 +2971,7 @@ GameObject:
   - component: {fileID: 569658207}
   - component: {fileID: 569658206}
   - component: {fileID: 569658205}
+  - component: {fileID: 569658208}
   m_Layer: 5
   m_Name: QuestButton
   m_TagString: Untagged
@@ -3063,6 +3094,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 569658203}
   m_CullTransparentMesh: 1
+--- !u!114 &569658208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569658203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1289537630}
+          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+          m_MethodName: OpenPartySelectPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &570135539
 GameObject:
   m_ObjectHideFlags: 0
@@ -3248,6 +3308,7 @@ GameObject:
   - component: {fileID: 600549510}
   - component: {fileID: 600549509}
   - component: {fileID: 600549508}
+  - component: {fileID: 600549511}
   m_Layer: 5
   m_Name: CloseButton (1)
   m_TagString: Untagged
@@ -3370,6 +3431,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600549506}
   m_CullTransparentMesh: 1
+--- !u!114 &600549511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600549506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1289537630}
+          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+          m_MethodName: CloseCharaMaxStatusButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &607940865
 GameObject:
   m_ObjectHideFlags: 0
@@ -5047,6 +5137,7 @@ GameObject:
   - component: {fileID: 770377933}
   - component: {fileID: 770377932}
   - component: {fileID: 770377931}
+  - component: {fileID: 770377934}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -5169,6 +5260,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770377929}
   m_CullTransparentMesh: 1
+--- !u!114 &770377934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770377929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1289537630}
+          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+          m_MethodName: CloseAllCharaPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &781675816
 GameObject:
   m_ObjectHideFlags: 0
@@ -7798,6 +7918,7 @@ GameObject:
   - component: {fileID: 1153760690}
   - component: {fileID: 1153760689}
   - component: {fileID: 1153760688}
+  - component: {fileID: 1153760691}
   m_Layer: 5
   m_Name: CloseButton (1)
   m_TagString: Untagged
@@ -7920,6 +8041,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153760686}
   m_CullTransparentMesh: 1
+--- !u!114 &1153760691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153760686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1289537630}
+          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+          m_MethodName: CloseCharaStatusPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1163246264
 GameObject:
   m_ObjectHideFlags: 0
@@ -8596,6 +8746,7 @@ GameObject:
   - component: {fileID: 1267722121}
   - component: {fileID: 1267722120}
   - component: {fileID: 1267722119}
+  - component: {fileID: 1267722122}
   m_Layer: 5
   m_Name: ResultClossButton
   m_TagString: Untagged
@@ -8718,6 +8869,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267722117}
   m_CullTransparentMesh: 1
+--- !u!114 &1267722122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267722117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1163246265}
+          m_TargetAssemblyTypeName: UsableCharacter, Assembly-CSharp
+          m_MethodName: ClossGachaResultPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1289537628
 GameObject:
   m_ObjectHideFlags: 0
@@ -9523,6 +9703,7 @@ GameObject:
   - component: {fileID: 1367323696}
   - component: {fileID: 1367323695}
   - component: {fileID: 1367323694}
+  - component: {fileID: 1367323697}
   m_Layer: 5
   m_Name: 10ren
   m_TagString: Untagged
@@ -9645,6 +9826,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1367323692}
   m_CullTransparentMesh: 1
+--- !u!114 &1367323697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367323692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1163246265}
+          m_TargetAssemblyTypeName: UsableCharacter, Assembly-CSharp
+          m_MethodName: GachaTen
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1380925284
 GameObject:
   m_ObjectHideFlags: 0
@@ -9932,6 +10142,7 @@ GameObject:
   - component: {fileID: 1414925641}
   - component: {fileID: 1414925640}
   - component: {fileID: 1414925639}
+  - component: {fileID: 1414925642}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -10054,6 +10265,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414925637}
   m_CullTransparentMesh: 1
+--- !u!114 &1414925642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414925637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1058404964}
+          m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+          m_MethodName: ChangeScene
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: BattleScene
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1431342368
 GameObject:
   m_ObjectHideFlags: 0
@@ -10843,8 +11083,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd5bcf0b2ac334a46b3e2db76d4bbfdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coin: 1500
-  _gachaCoin: 1500
+  _coin: 0
+  _gachaCoin: 0
 --- !u!1 &1544266259
 GameObject:
   m_ObjectHideFlags: 0
@@ -11017,6 +11257,7 @@ GameObject:
   - component: {fileID: 1566275823}
   - component: {fileID: 1566275822}
   - component: {fileID: 1566275821}
+  - component: {fileID: 1566275824}
   m_Layer: 5
   m_Name: CharacterButton
   m_TagString: Untagged
@@ -11139,6 +11380,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1566275819}
   m_CullTransparentMesh: 1
+--- !u!114 &1566275824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566275819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1289537630}
+          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+          m_MethodName: OpenAllCharaPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1571869354
 GameObject:
   m_ObjectHideFlags: 0
@@ -12641,6 +12911,7 @@ GameObject:
   - component: {fileID: 1821124861}
   - component: {fileID: 1821124860}
   - component: {fileID: 1821124859}
+  - component: {fileID: 1821124862}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -12763,6 +13034,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821124857}
   m_CullTransparentMesh: 1
+--- !u!114 &1821124862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821124857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1289537630}
+          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+          m_MethodName: CloseGachaPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1856264334
 GameObject:
   m_ObjectHideFlags: 0
@@ -13184,6 +13484,7 @@ GameObject:
   - component: {fileID: 1922990707}
   - component: {fileID: 1922990706}
   - component: {fileID: 1922990705}
+  - component: {fileID: 1922990708}
   m_Layer: 5
   m_Name: GachaButton
   m_TagString: Untagged
@@ -13306,6 +13607,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1922990703}
   m_CullTransparentMesh: 1
+--- !u!114 &1922990708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922990703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1289537630}
+          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+          m_MethodName: OpenGachaPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1947197373
 GameObject:
   m_ObjectHideFlags: 0

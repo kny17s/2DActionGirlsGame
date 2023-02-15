@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(GameCoinData))]
+/*[CustomEditor(typeof(GameCoinData))]
 public class GameCoinEditer : Editor
 {
     public override void OnInspectorGUI()
@@ -23,4 +23,4 @@ public class GameCoinEditer : Editor
             gameCoinData.AddGachaCoin(1500);
         }
     }
-}
+}*/

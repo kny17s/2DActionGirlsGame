@@ -1,8 +1,8 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(CharacterDataController))]
-public class SaveDataEditer : Editor
+/*[CustomEditor(typeof(EnemyDataController))]
+public class EnemySavaDataEditer : Editor
 {
 
     /// <summary>
@@ -13,11 +13,11 @@ public class SaveDataEditer : Editor
         //元のInspector部分を表示
         base.OnInspectorGUI();
 
-        CharacterDataController saveController = target as CharacterDataController;
+        EnemyDataController enemySaveController = target as EnemyDataController;
 
         if (GUILayout.Button("キャラクター再登録"))
         {
-            saveController.Rgister();
+            enemySaveController.EnemyRgister();
         }
     }
-}
+}*/
