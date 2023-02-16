@@ -135,20 +135,17 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
 
     private void Start()
     {
+        UsableCharacter.Instance.LoadChara();
 
         this.UpdateAsObservable()
             .Subscribe(_ => GameCoin())
             .AddTo(this);
 
         _gachaButton.OnPointerClickAsObservable()
-            .Subscribe(_ => UsableCharacter.Instance.GachaTen())
-            .AddTo(this);
+            .Subscribe(_ => UsableCharacter.Instance.GachaTen());
 
         _resultClossButton.OnPointerClickAsObservable()
-            .Subscribe(_ => UsableCharacter.Instance.ClossGachaResultPanel())
-            .AddTo(this);
-
-        UsableCharacter.Instance.LoadChara();
+            .Subscribe(_ => UsableCharacter.Instance.ClossGachaResultPanel());
     }
 
     public void GameCoin()

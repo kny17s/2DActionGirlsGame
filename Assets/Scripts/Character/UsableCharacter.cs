@@ -99,7 +99,6 @@ public class UsableCharacter : SingletonMonoBehaviour<UsableCharacter>
         }
         else
         {
-            OpenGachaResultPanel();
             GameCoinData.Instance.UseGachaCoin(1500);
 
             for (int i = 0; i < 10; i++)
@@ -122,6 +121,8 @@ public class UsableCharacter : SingletonMonoBehaviour<UsableCharacter>
                     CharacterDataController.Instance.PlusAllStatus(num);
                 }
             }
+
+            Debug.Log(_gathaNum);
 
             GachaResult(_gathaNum);
         }
@@ -150,7 +151,6 @@ public class UsableCharacter : SingletonMonoBehaviour<UsableCharacter>
         GachaResult(_gathaNum);
     }
 
-
     public void OpenGachaResultPanel()
     {
         UIManager.Instance.GathaResultPanel.SetActive(true);
@@ -158,6 +158,8 @@ public class UsableCharacter : SingletonMonoBehaviour<UsableCharacter>
 
     public async void GachaResult(int num)
     {
+        OpenGachaResultPanel();
+
         await UniTask.Delay(System.TimeSpan.FromSeconds(0.5f));
 
         for (int i = num; i < 10; i++)
@@ -167,7 +169,6 @@ public class UsableCharacter : SingletonMonoBehaviour<UsableCharacter>
         }
 
         UIManager.Instance.ResultClossButton.gameObject.SetActive(true);
-        _gathaNum = 10;
     }
 
     public void ClossGachaResultPanel()
