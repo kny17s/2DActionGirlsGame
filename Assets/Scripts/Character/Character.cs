@@ -32,6 +32,7 @@ public class Character : MonoBehaviour,IDamagable,IRecovery
 
     async void Start()
 	{
+		_charaImage.color = Color.white;
 		await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
 
 		_hpSlider.maxValue = CharacterSaveData.Instance.Hp[_id];
@@ -59,7 +60,7 @@ public class Character : MonoBehaviour,IDamagable,IRecovery
 			_charaImage.color = Color.gray;
 			_death = true;
 			Debug.Log($"{CharacterDataController.Instance.SavePath[_id]}‚ÌHp‚ª‚È‚­‚È‚è‚Ü‚µ‚½");
-			TargetManager.Instance.CharacterDeathCheck();
+			BattleManager.Instance.CharacterDeathCheck();
 		}
 	}
 

@@ -42,11 +42,14 @@ public class CharacterAttack : MonoBehaviour
 			.AddTo(this);
 	}
 
-	public void UseSkill()
+	public async void UseSkill()
     {
 		if (_skill == true && !_character.Death)
 		{
 			Debug.Log("スキルを使用しました。");
+
+			BattleManager.Instance.SkillEffect(_character.Id);
+			await UniTask.Delay(TimeSpan.FromSeconds(2.5f));
 
 			switch (_character.Id)
 			{
@@ -100,7 +103,7 @@ public class CharacterAttack : MonoBehaviour
 
 		_skill = false;
 
-		var num = UnityEngine.Random.Range(0, TargetManager.Instance.EnemyObjects.Count);
+		var num = UnityEngine.Random.Range(0, BattleManager.Instance.EnemyObjects.Count);
 		var damage = (CharacterSaveData.Instance.Atk[_character.Id] * 2) - EnemySaveData.Instance.EnemyDef[num];
 
 		if (damage <= 0)
@@ -115,11 +118,11 @@ public class CharacterAttack : MonoBehaviour
 			//Animator anim = AttakTarget.I._CharacterImage[j].GetComponent<Animator>();
 			//anim.SetTrigger("Attack");
 
-			var damagetarget = TargetManager.Instance.EnemyObjects[num].GetComponent<IDamagable>();
+			var damagetarget = BattleManager.Instance.EnemyObjects[num].GetComponent<IDamagable>();
 
 			if (damagetarget != null)
 			{
-				TargetManager.Instance.EnemyObjects[num].GetComponent<IDamagable>().AddDamage(damage);
+				BattleManager.Instance.EnemyObjects[num].GetComponent<IDamagable>().AddDamage(damage);
 			}
 		}
 	}
@@ -133,11 +136,11 @@ public class CharacterAttack : MonoBehaviour
 
 		for (int i = 0; i < 5; i++)
         {
-			var recoverytarget = TargetManager.Instance.CharacterDatas[i].GetComponent<IRecovery>();
+			var recoverytarget = BattleManager.Instance.CharacterDatas[i].GetComponent<IRecovery>();
 
 			if (recoverytarget != null)
 			{
-				TargetManager.Instance.CharacterDatas[i].GetComponent<IRecovery>().AddRecovery(recovery, i);
+				BattleManager.Instance.CharacterDatas[i].GetComponent<IRecovery>().AddRecovery(recovery, i);
 			}
 		}
     }
@@ -151,7 +154,7 @@ public class CharacterAttack : MonoBehaviour
 				Debug.Log($"{CharacterDataController.Instance.SavePath[_character.Id]}が攻撃！");
 
 				_currentTime = _atkSlider.minValue;
-				var num = UnityEngine.Random.Range(0, TargetManager.Instance.EnemyObjects.Count);
+				var num = UnityEngine.Random.Range(0, BattleManager.Instance.EnemyObjects.Count);
 				var damage = CharacterSaveData.Instance.Atk[_character.Id] - EnemySaveData.Instance.EnemyDef[num];
 
 				if (damage <= 0)
@@ -162,15 +165,15 @@ public class CharacterAttack : MonoBehaviour
 				else
 				{
 					var i = UnityEngine.Random.Range(0, 5);
-					Animator anim = TargetManager.Instance._CharacterImage[i].GetComponent<Animator>();
+					Animator anim = BattleManager.Instance._CharacterImage[i].GetComponent<Animator>();
 					anim.SetTrigger("Attack");
 					await UniTask.Delay(TimeSpan.FromSeconds(1f));
 
-					var damagetarget = TargetManager.Instance.EnemyObjects[num].GetComponent<IDamagable>();
+					var damagetarget = BattleManager.Instance.EnemyObjects[num].GetComponent<IDamagable>();
 
 					if (damagetarget != null)
 					{
-						TargetManager.Instance.EnemyObjects[num].GetComponent<IDamagable>().AddDamage(damage);
+						BattleManager.Instance.EnemyObjects[num].GetComponent<IDamagable>().AddDamage(damage);
 					}
 				}
 			}

@@ -7,8 +7,9 @@ using UniRx.Triggers;
 using Cysharp.Threading;
 using System;
 using Cysharp.Threading.Tasks;
+using UnityEngine.Video;
 
-public class TargetManager : SingletonMonoBehaviour<TargetManager>
+public class BattleManager : SingletonMonoBehaviour<BattleManager>
 {
     public List<GameObject> EnemyObjects => _enemyObjects;
 
@@ -59,6 +60,12 @@ public class TargetManager : SingletonMonoBehaviour<TargetManager>
     [SerializeField]
     GameObject _enemyBossObject;
 
+    [SerializeField]
+    VideoPlayer _skillVideoPlayer;
+
+    [SerializeField]
+    VideoClip[] _SkillvideoClips;
+
     private void Start()
     {
         for (int i = 0; i < UsableCharacter.Instance.CharaNum.Count; i++)
@@ -73,6 +80,26 @@ public class TargetManager : SingletonMonoBehaviour<TargetManager>
 
         GetObjectChildren(_parentObject.gameObject);
 
+        /*for(int i = 0; i < 2; i++)
+        {
+            var num = UnityEngine.Random.Range(0, 3);
+
+            switch(num)
+            {
+                case 0:
+                    _enemyObjects.Add(_enemyObject);
+                    Instantiate(_enemyObject, _enemyObject.transform);
+                    break;
+                case 1:
+                    _enemyObjects.Add(_barrieEnemyObject);
+                    Instantiate(_barrieEnemyObject, _barrieEnemyObject.transform);
+                    break;
+                case 2:
+                    _enemyObjects.Add(_enemyBossObject);
+                    Instantiate(_enemyBossObject, _enemyBossObject.transform);
+                    break;
+            }
+        }*/
     }
 
     public void GetObjectChildren(GameObject obj)
@@ -120,6 +147,7 @@ public class TargetManager : SingletonMonoBehaviour<TargetManager>
 
         if (_characterDatas.Count == 0)
         {
+            _characterImage.Clear();
             await UniTask.Delay(TimeSpan.FromSeconds(3.0f));
             SceneLoader.Instance.ChangeScene("GameOverScene");
         }
@@ -130,16 +158,19 @@ public class TargetManager : SingletonMonoBehaviour<TargetManager>
         if(_enemy.Death == true)
         {
             _enemyObjects.Remove(_enemyObject);
+            Destroy(_enemyObject);
         }
 
         if (_barrieEnemy.Death == true)
         {
             _enemyObjects.Remove(_barrieEnemyObject);
+            Destroy(_barrieEnemyObject);
         }
 
         if (_enemyBoss.Death == true)
         {
             _enemyObjects.Remove(_enemyBossObject);
+            Destroy(_enemyBossObject);
         }
 
         if (_enemyObjects.Count == 0)
@@ -147,5 +178,17 @@ public class TargetManager : SingletonMonoBehaviour<TargetManager>
             await UniTask.Delay(TimeSpan.FromSeconds(3.0f));
             SceneLoader.Instance.ChangeScene("GameClearScene");
         }
+    }
+    public async void SkillEffect(int id)
+    {
+        _skillVideoPlayer.enabled = true;
+        _skillVideoPlayer.clip = _SkillvideoClips[id];
+        _skillVideoPlayer.Prepare();
+        _skillVideoPlayer.Play();
+
+        await UniTask.Delay(TimeSpan.FromSeconds(3.5f));
+
+        _skillVideoPlayer.Stop();
+        _skillVideoPlayer.enabled = false;
     }
 }

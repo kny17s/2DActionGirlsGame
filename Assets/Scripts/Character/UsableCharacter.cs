@@ -1,6 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,9 +22,6 @@ public class UsableCharacter : SingletonMonoBehaviour<UsableCharacter>
     const int USE_GACHACOIN = 1500;
 
     [SerializeField]
-    Transform _parentObject;
-
-    [SerializeField]
     GameObject[] _charaPrefabs;
 
     [SerializeField]
@@ -31,15 +29,6 @@ public class UsableCharacter : SingletonMonoBehaviour<UsableCharacter>
 
     [SerializeField]
     List<int> _charaID = new();
-
-    [SerializeField]
-    Button _playButton;
-
-    [SerializeField]
-    Transform _parent;
-
-    [SerializeField]
-    Transform _charaSelectParent;
 
     [SerializeField]
     List<GameObject> _hasCharacter;
@@ -50,24 +39,16 @@ public class UsableCharacter : SingletonMonoBehaviour<UsableCharacter>
     [SerializeField]
     int[] _charaNum;
 
-    [SerializeField]
-    GameObject _gathaResultPanel;
-
-    [SerializeField]
-    Transform _gathaResultParent;
-
-    [SerializeField]
-    Button _resultClossButton;
-
     int _gathaNum = 10;
-
-    [SerializeField]
-    GameCoinData _gameCoinData;
 
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
+
+        _charaID.Clear();
+        GetChildren(UIManager.Instance.ParentObject.gameObject);
     }
+
     public void AddCharacter(int num)
     {
         if (_charaID.Count == _partyMax)
@@ -78,14 +59,14 @@ public class UsableCharacter : SingletonMonoBehaviour<UsableCharacter>
         if (_charaID.Count < _partyMax)
         {
             _charaID.Add(num);
-            Instantiate(_charaPrefabs[num],_parentObject);
+            Instantiate(_charaPrefabs[num], UIManager.Instance.ParentObject);
             if (_charaID.Count == _partyMax)
             {
-                _playButton.gameObject.SetActive(true);
+                UIManager.Instance.PlayButton.gameObject.SetActive(true);
             }
             else
             {
-                _playButton.gameObject.SetActive(false);
+                UIManager.Instance.PlayButton.gameObject.SetActive(false);
             }
         }
     }
@@ -94,21 +75,21 @@ public class UsableCharacter : SingletonMonoBehaviour<UsableCharacter>
     {
         if(_charaID.Count <= _partyMax)
         {
-            _playButton.gameObject.SetActive(false);
+            UIManager.Instance.PlayButton.gameObject.SetActive(false);
             _charaID.Remove(num);
         }
     }
 
     public void GachaTen()
     {
-        if(_gameCoinData.GachaCoin < USE_GACHACOIN)
+        if(GameCoinData.Instance.GachaCoin < USE_GACHACOIN)
         {
             Debug.Log("足りないよ");
         }
         else
         {
             OpenGachaResultPanel();
-            _gameCoinData.UseGachaCoin(1500);
+            GameCoinData.Instance.UseGachaCoin(1500);
 
             for (int i = 0; i < 10; i++)
             {
@@ -118,8 +99,8 @@ public class UsableCharacter : SingletonMonoBehaviour<UsableCharacter>
                 if (!_hasCharacter.Contains(_gachaCharacter[num]))
                 {
                     _hasCharacter.Add(_gachaCharacter[num]);
-                    Instantiate(_gachaCharacter[num], _parent);
-                    Instantiate(_selectChara[num], _charaSelectParent);
+                    Instantiate(_gachaCharacter[num], UIManager.Instance.Parent);
+                    Instantiate(_selectChara[num], UIManager.Instance.CharaSelectParent);
                     _gathaNum--;
                 }
                 else
@@ -143,8 +124,8 @@ public class UsableCharacter : SingletonMonoBehaviour<UsableCharacter>
         if (!_hasCharacter.Contains(_gachaCharacter[num]))
         {
             _hasCharacter.Add(_gachaCharacter[num]);
-            Instantiate(_gachaCharacter[num], _parent);
-            Instantiate(_selectChara[num], _charaSelectParent);
+            Instantiate(_gachaCharacter[num], UIManager.Instance.Parent);
+            Instantiate(_selectChara[num], UIManager.Instance.CharaSelectParent);
             _gathaNum--;
         }
         else
@@ -160,7 +141,7 @@ public class UsableCharacter : SingletonMonoBehaviour<UsableCharacter>
 
     public void OpenGachaResultPanel()
     {
-        _gathaResultPanel.SetActive(true);
+        UIManager.Instance.GathaResultPanel.SetActive(true);
     }
 
     public async void GachaResult(int num)
@@ -169,18 +150,18 @@ public class UsableCharacter : SingletonMonoBehaviour<UsableCharacter>
 
         for (int i = num; i < 10; i++)
         {
-            Instantiate(_hasCharacter[i - num], _gathaResultParent);
+            Instantiate(_hasCharacter[i - num], UIManager.Instance.GathaResultParent);
             await UniTask.Delay(System.TimeSpan.FromSeconds(1.0f));
         }
 
-        _resultClossButton.gameObject.SetActive(true);
+        UIManager.Instance.ResultClossButton.gameObject.SetActive(true);
     }
 
     public void ClossGachaResultPanel()
     {
-        _gathaResultPanel.SetActive(false);
-        _resultClossButton.gameObject.SetActive(false);
-        GetChildren(_gathaResultParent.gameObject);
+        UIManager.Instance.GathaResultPanel.SetActive(false);
+        UIManager.Instance.ResultClossButton.gameObject.SetActive(false);
+        GetChildren(UIManager.Instance.GathaResultParent.gameObject);
     }
 
 

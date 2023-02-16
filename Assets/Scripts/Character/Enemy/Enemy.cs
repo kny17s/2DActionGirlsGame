@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour,IDamagable
 
     async void Start()
 	{
-
 		await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
 
 		_hpSlider.maxValue = EnemySaveData.Instance.EnemyHp[0];
@@ -40,8 +39,7 @@ public class Enemy : MonoBehaviour,IDamagable
 		{
 			_death = true;
 			Debug.Log("Enemy‚ð“|‚µ‚½");
-			gameObject.SetActive(false);
-			TargetManager.Instance.EnemyDeathCheck();
+			BattleManager.Instance.EnemyDeathCheck();
 		}
 	}
 }

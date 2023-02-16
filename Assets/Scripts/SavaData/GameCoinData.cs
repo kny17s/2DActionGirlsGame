@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameCoinData : MonoBehaviour
+public class GameCoinData : SingletonMonoBehaviour<GameCoinData>
 {
     public int Coin => _coin;
     public int GachaCoin => _gachaCoin;
@@ -19,19 +19,22 @@ public class GameCoinData : MonoBehaviour
 
     string _gachaCoinKey;
 
-    private void Awake()
+    private void Start()
     {
+        //DontDestroyOnLoad(gameObject);
+
         //キー名を設定
         _coinKey = "COIN";
         _gachaCoinKey = "GACHA_COIN";
 
         //初期コイン登録
         _coin = PlayerPrefs.GetInt(_coinKey, 10000);
-        _gachaCoin = PlayerPrefs.GetInt(_gachaCoinKey, 1500);
+        _gachaCoin = PlayerPrefs.GetInt(_gachaCoinKey, 4500);
 
-        PlayerPrefs.Save();
-
-        DontDestroyOnLoad(gameObject);
+        Save(_coinKey, _coin);
+        Load(_coinKey, _coin);
+        Save(_gachaCoinKey, _gachaCoin);
+        Load(_gachaCoinKey, _gachaCoin);
     }
 
     /// <summary>コインを手に入れた時</summary>
@@ -59,6 +62,8 @@ public class GameCoinData : MonoBehaviour
         _coin -= useCoin;
         Save(_coinKey, _coin);
         Load(_coinKey, _coin);
+
+        UIManager.Instance.GameCoin();
     }
 
     /// <summary>ガチャコインを使用した時</summary>
@@ -68,6 +73,8 @@ public class GameCoinData : MonoBehaviour
         _gachaCoin -= useGachaCoin;
         Save(_gachaCoinKey, _gachaCoin);
         Load(_gachaCoinKey, _gachaCoin);
+
+        UIManager.Instance.GameCoin();
     }
 
 

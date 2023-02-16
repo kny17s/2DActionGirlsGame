@@ -47,9 +47,7 @@ public class EnemyBoss : MonoBehaviour,IDamagable
         {
             _death = true;
             Debug.Log("Bossを倒した");
-            //できたらアニメーション入れたい
-            gameObject.SetActive(false);
-            TargetManager.Instance.EnemyDeathCheck();
+            BattleManager.Instance.EnemyDeathCheck();
         }
     }
 }

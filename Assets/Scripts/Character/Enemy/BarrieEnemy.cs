@@ -25,11 +25,8 @@ public class BarrieEnemy : MonoBehaviour, IDamagable
 	[SerializeField]
 	bool _death = false;
 
-	CreateDamageText _createDamage;
-
 	async void Start()
 	{
-		_createDamage = GetComponent<CreateDamageText>();
 		await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
 
 		_hpSlider.maxValue = EnemySaveData.Instance.EnemyHp[0];
@@ -60,9 +57,7 @@ public class BarrieEnemy : MonoBehaviour, IDamagable
         {
 			_death = true;
 			Debug.Log("BarrieEnemyを倒した");
-			//できたらアニメーション入れたい
-			gameObject.SetActive(false);
-			TargetManager.Instance.EnemyDeathCheck();
+			BattleManager.Instance.EnemyDeathCheck();
 		}
     }
 }

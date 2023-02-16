@@ -7,6 +7,14 @@ using UniRx.Triggers;
 
 public class UIManager : SingletonMonoBehaviour<UIManager>
 {
+    public Transform ParentObject => _parentObject;
+    public Transform Parent => _parent;
+    public Button PlayButton => _playButton;
+    public Button ResultClossButton => _resultClossButton; 
+    public Transform GathaResultParent => _gathaResultParent;
+    public GameObject GathaResultPanel => _gathaResultPanel;
+
+    public Transform CharaSelectParent => _charaSelectParent;
 
     [SerializeField]
     GameObject _charaSelectPanel;
@@ -101,12 +109,47 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
     [SerializeField]
     Text _gachaCoinText;
 
+    [SerializeField]
+    GameObject _gathaResultPanel;
+
+    [SerializeField]
+    Transform _gathaResultParent;
+
+    [SerializeField]
+    Button _resultClossButton;
+
+    [SerializeField]
+    Button _playButton;
+
+    [SerializeField]
+    Transform _parent;
+
+    [SerializeField]
+    Transform _parentObject;
+
+    [SerializeField]
+    Transform _charaSelectParent;
+
+    [SerializeField]
+    Button _gachaButton;
+
     private void Start()
     {
+        //DontDestroyOnLoad(gameObject);
+
         this.UpdateAsObservable()
             .Subscribe(_ => GameCoin())
             .AddTo(this);
+
+        _gachaButton.OnPointerClickAsObservable()
+            .Subscribe(_ => UsableCharacter.Instance.GachaTen())
+            .AddTo(this);
+
+        _resultClossButton.OnPointerClickAsObservable()
+            .Subscribe(_ => UsableCharacter.Instance.ClossGachaResultPanel())
+            .AddTo(this);
     }
+
     public void GameCoin()
     {
         _coinText.text = _gameCoinData.Coin.ToString();

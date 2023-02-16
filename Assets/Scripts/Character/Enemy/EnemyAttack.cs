@@ -89,12 +89,12 @@ public class EnemyAttack : MonoBehaviour
 				}
 				else
 				{
-					var num = UnityEngine.Random.Range(0, TargetManager.Instance.CharacterDatas.Count);
+					var num = UnityEngine.Random.Range(0, BattleManager.Instance.CharacterDatas.Count);
 
-					var damagetarget = TargetManager.Instance.CharacterDatas[num].GetComponent<IDamagable>();
+					var damagetarget = BattleManager.Instance.CharacterDatas[num].GetComponent<IDamagable>();
 					if (damagetarget != null)
 					{
-						TargetManager.Instance.CharacterDatas[num].GetComponent<IDamagable>().AddDamage(damage);
+						BattleManager.Instance.CharacterDatas[num].GetComponent<IDamagable>().AddDamage(damage);
 					}
 				}
 			}
