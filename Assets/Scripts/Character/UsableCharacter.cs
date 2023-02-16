@@ -44,9 +44,20 @@ public class UsableCharacter : SingletonMonoBehaviour<UsableCharacter>
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
+    }
 
-        _charaID.Clear();
-        GetChildren(UIManager.Instance.ParentObject.gameObject);
+    public void LoadChara()
+    {
+        _charaID = new();
+
+        for (int i = 0; i < 10; i++)
+        {
+            if(_charaNum[i] >= 1)
+            {
+                Instantiate(_gachaCharacter[i], UIManager.Instance.Parent);
+                Instantiate(_selectChara[i], UIManager.Instance.CharaSelectParent);
+            }
+        }
     }
 
     public void AddCharacter(int num)
@@ -102,11 +113,13 @@ public class UsableCharacter : SingletonMonoBehaviour<UsableCharacter>
                     Instantiate(_gachaCharacter[num], UIManager.Instance.Parent);
                     Instantiate(_selectChara[num], UIManager.Instance.CharaSelectParent);
                     _gathaNum--;
+                    _charaNum[num]++;
                 }
                 else
                 {
                     Debug.Log($"ID：{num}のキャラが重複しました。");
                     _charaNum[num]++;
+                    CharacterDataController.Instance.PlusAllStatus(num);
                 }
             }
 
@@ -134,7 +147,6 @@ public class UsableCharacter : SingletonMonoBehaviour<UsableCharacter>
             _charaNum[num]++;
         }
 
-        Debug.Log(_gathaNum);
         GachaResult(_gathaNum);
     }
 
@@ -155,6 +167,7 @@ public class UsableCharacter : SingletonMonoBehaviour<UsableCharacter>
         }
 
         UIManager.Instance.ResultClossButton.gameObject.SetActive(true);
+        _gathaNum = 10;
     }
 
     public void ClossGachaResultPanel()

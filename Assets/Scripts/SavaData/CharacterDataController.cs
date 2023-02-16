@@ -81,4 +81,16 @@ public class CharacterDataController : SingletonMonoBehaviour<CharacterDataContr
             JsonSaveManager<CharacterData>.Save(saveData, _savePath[i]);
         }
     }
+
+    public void PlusAllStatus(int id)
+    {
+        CharacterSaveData.Instance.PlusLv(1, id);
+        CharacterSaveData.Instance.PlusHp(2, id);
+        CharacterSaveData.Instance.PlusMp(0, id);
+        CharacterSaveData.Instance.PlusAtk(1, id);
+        CharacterSaveData.Instance.PlusDef(1, id);
+        CharacterSaveData.Instance.PlusAgi(0, id);
+
+        OverWriteSaveData();
+    }
 }

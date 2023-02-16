@@ -135,7 +135,6 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
 
     private void Start()
     {
-        //DontDestroyOnLoad(gameObject);
 
         this.UpdateAsObservable()
             .Subscribe(_ => GameCoin())
@@ -148,6 +147,8 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
         _resultClossButton.OnPointerClickAsObservable()
             .Subscribe(_ => UsableCharacter.Instance.ClossGachaResultPanel())
             .AddTo(this);
+
+        UsableCharacter.Instance.LoadChara();
     }
 
     public void GameCoin()

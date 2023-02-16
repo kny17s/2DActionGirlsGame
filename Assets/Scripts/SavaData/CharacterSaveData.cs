@@ -119,15 +119,15 @@ public class CharacterSaveData : SingletonMonoBehaviour<CharacterSaveData>
     /// <param name="id">キャラクターID</param>
     public void PlusAgi(float agi, int id)
     {
-        _agi[id] += agi;
+        _agi[id] -= agi;
     }
 
     /// <summary>スキルポイントが増えた場合に反映</summary>
     /// <param name="mp">上がったレベル</param>
     /// <param name="id">キャラクターID</param>
-    public void PlusSp(int mp, int id)
+    public void PlusMp(int mp, int id)
     {
-        _mp[id] += mp;
+        _mp[id] -= mp;
     }
 }
 

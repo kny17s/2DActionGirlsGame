@@ -21,6 +21,7 @@ public class StageClear : MonoBehaviour
             .AddTo(this);
 
         GameCoinData.Instance.AddGachaCoin(_reward);
+
     }
 
     public void CountDown()
